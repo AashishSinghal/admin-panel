@@ -1,8 +1,15 @@
 import { Grid, Input, MenuItem, TextField } from "@material-ui/core";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
 import { uploadVideo } from "../APIs/uploadVideo";
+import StaticSupportingActress from "../Components/StaticSupportingActress";
+import DynamicSupportingActress from "../Components/DynamicSupportingActress";
+import StaticSupportingActor from "../Components/StaticSupportingActor";
+import DynamicSupportingActor from "../Components/DynamicSupportingActor";
+import StaticCast from "../Components/StaticCast";
+import DynamicCast from "../Components/DynamicCast";
 import "./preUploadvideo.css";
 import {
   languages,
@@ -15,6 +22,68 @@ import {
 const AddPreUploadVideo = () => {
   const [videoFile, setVideoFile] = useState(null);
   const [fileSelectorDisabled, setFileSelectorDisabled] = useState(false);
+  const [
+    numSupportingActressChildren,
+    setNumSupportingActressChildren,
+  ] = useState(0);
+
+  const [numSupportingActorChildren, setNumSupportingActorChildren] = useState(
+    0
+  );
+  const [numCastChildren, setNumCastChildren] = useState(0);
+
+  const onAddSupportingActressChild = () => {
+    setNumSupportingActressChildren(numSupportingActressChildren + 1);
+  };
+  const onRemoveSupportingActressChild = () => {
+    setNumSupportingActressChildren(numSupportingActressChildren - 1);
+  };
+
+  const SupportingActressChildren = [];
+
+  for (var i = 0; i < numSupportingActressChildren; i += 1) {
+    SupportingActressChildren.push(
+      <DynamicSupportingActress
+        key={i}
+        number={i}
+        onRemove={onRemoveSupportingActressChild}
+      />
+    );
+  }
+
+  const onAddSupportingActorChild = () => {
+    setNumSupportingActorChildren(numSupportingActorChildren + 1);
+  };
+  const onRemoveSupportingActorChild = () => {
+    setNumSupportingActorChildren(numSupportingActorChildren - 1);
+  };
+
+  const SupportingActorChildren = [];
+
+  for (var i = 0; i < numSupportingActorChildren; i += 1) {
+    SupportingActorChildren.push(
+      <DynamicSupportingActor
+        key={i}
+        number={i}
+        onRemove={onRemoveSupportingActorChild}
+      />
+    );
+  }
+
+  const onAddCastChild = () => {
+    setNumCastChildren(numCastChildren + 1);
+  };
+  const onRemoveCastChild = () => {
+    setNumCastChildren(numCastChildren - 1);
+  };
+
+  const CastChildren = [];
+
+  for (var i = 0; i < numCastChildren; i += 1) {
+    CastChildren.push(
+      <DynamicCast key={i} number={i} onRemove={onRemoveCastChild} />
+    );
+  }
   const [videoDetails, setVideoDesc] = useState({
     preUploadVideo: {
       cbfcrating: "",
@@ -270,130 +339,41 @@ const AddPreUploadVideo = () => {
                 value={videoDetails.preUploadVideo.strysynp}
               />
             </Grid>
-            <Grid item xs={12}>
-              <h3>Cast 1</h3>
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="actorName "
-                label="Actor Name"
-                onChange=""
-                placeholder="Thomas Man"
-                required
-                type="text"
-                value={videoDetails.preUploadVideo.actorName}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <Input
-                className="input"
-                id="actimg"
-                label="Actor Image"
-                onChange=""
-                // placeholder="trailer"
-                required
-                type="file"
-                value={videoDetails.preUploadVideo.actimg}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="actressName "
-                label="Actress Name"
-                onChange=""
-                placeholder="Mena txt"
-                required
-                type="text"
-                value={videoDetails.preUploadVideo.actressName}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <Input
-                className="input"
-                id="actrimg"
-                label="Actress Image"
-                onChange=""
-                // placeholder="trailer"
-                required
-                type="file"
-                value={videoDetails.preUploadVideo.actrimg}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <h3>Supporting Actor 1</h3>
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="actname"
-                label="Name"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Name"
-                required
-                type="text"
-                value={videoDetails.preUploadVideo.actname}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <Input
-                className="input"
-                id="supactimg"
-                label="Supporting Actor Image"
-                onChange=""
-                // placeholder="trailer"
-                required
-                type="file"
-                value={videoDetails.preUploadVideo.supactimg}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="phnnumber"
-                label="Phone Number"
-                onChange=""
-                placeholder="Phone Number"
-                required
-                type="number"
-                value={videoDetails.preUploadVideo.phnnumber}
-              />
-            </Grid>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onAddCastChild}
+              >
+                Add Cast
+              </Button>
+              <StaticCast />
+              {CastChildren}
+            </div>
             <Grid item xs={6} sm={3} md={6}></Grid>
-            <Grid item xs={12}>
-              <h3>Supporting Actress 1</h3>
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="actrname"
-                label="Name"
-                onChange={(e) => handleInputChange(e)}
-                placeholder="Name"
-                required
-                type="text"
-                value={videoDetails.preUploadVideo.actrname}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <Input
-                className="input"
-                id="supactrimg"
-                label="Supporting Actress Image"
-                onChange=""
-                // placeholder="trailer"
-                required
-                type="file"
-                value={videoDetails.preUploadVideo.supactrimg}
-              />
-            </Grid>
-            <Grid item xs={6} sm={3} md={6}>
-              <TextField
-                id="phnnumber"
-                label="Phone Number"
-                onChange=""
-                placeholder="Phone Number"
-                required
-                type="number"
-                value={videoDetails.preUploadVideo.phnnumber}
-              />
-            </Grid>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onAddSupportingActorChild}
+              >
+                Add Supporting Actor
+              </Button>
+              <StaticSupportingActor />
+              {SupportingActorChildren}
+            </div>
+            <Grid item xs={6} sm={3} md={6}></Grid>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onAddSupportingActressChild}
+              >
+                Add Supporting Actress
+              </Button>
+              <StaticSupportingActress />
+              {SupportingActressChildren}
+            </div>
             <Grid item xs={6} sm={3} md={6}></Grid>
             <Grid item xs={12}>
               <h3>Directors 1</h3>
