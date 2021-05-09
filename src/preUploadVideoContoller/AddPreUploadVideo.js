@@ -4,6 +4,8 @@ import Container from "@material-ui/core/Container";
 import React, { useState } from "react";
 import { uploadVideo } from "../APIs/uploadVideo";
 import "./preUploadvideo.css";
+// import { AddDirector } from "./AddDirectors/AddDirectors.js"
+import AddDirector from "./AddDirectors/AddDirectors";
 import {
   languages,
   planTypes,
@@ -11,6 +13,7 @@ import {
   cbfcrating,
   genres,
 } from "../Utils/Constants";
+import AddWriter from "./AddWriters/AddWriters";
 
 const AddPreUploadVideo = () => {
   const [videoFile, setVideoFile] = useState(null);
@@ -395,7 +398,9 @@ const AddPreUploadVideo = () => {
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}></Grid>
-            <Grid item xs={12}>
+            <AddDirector/>
+            <AddWriter/>
+            {/* <Grid item xs={12}>
               <h3>Directors 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -420,8 +425,8 @@ const AddPreUploadVideo = () => {
                 type="file"
                 value={videoDetails.preUploadVideo.directorimg}
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid> */}
+            {/* <Grid item xs={12}>
               <h3>Writer 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -446,7 +451,7 @@ const AddPreUploadVideo = () => {
                 type="file"
                 value={videoDetails.preUploadVideo.writerimg}
               />
-            </Grid>
+            </Grid> */}
             <Grid items xs={12}></Grid>
           </Grid>
         </Container>
