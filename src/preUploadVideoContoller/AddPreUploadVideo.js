@@ -1,7 +1,9 @@
 import { Grid, Input, MenuItem, TextField } from "@material-ui/core";
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Container from '@material-ui/core/Container';
 import React, { useState } from "react";
 import { uploadVideo } from "../APIs/uploadVideo";
+// import './preUploadvideo.css';
 
 const videoTypes = [
   "Short-films",
@@ -171,8 +173,9 @@ const AddPreUploadVideo = () => {
       <h1>Pre Upload Video</h1>
       <br />
       <form>
+        <Container maxWidth="sm">
         <Grid container spacing={3} justify="space-around">
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
               id="language"
               select
@@ -189,7 +192,7 @@ const AddPreUploadVideo = () => {
             ))}
           </TextField>
         </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
           <TextField
             id="planType "
             select
@@ -206,7 +209,7 @@ const AddPreUploadVideo = () => {
             ))}
           </TextField>
         </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextareaAutosize 
               id="description"
               label="Video Description"
@@ -218,7 +221,8 @@ const AddPreUploadVideo = () => {
               value={videoDesc.preUploadVideo.description}
             />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}></Grid>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
               id="select-video-type"
               select
@@ -235,7 +239,7 @@ const AddPreUploadVideo = () => {
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
               id="cbfcrating"
               select
@@ -252,7 +256,7 @@ const AddPreUploadVideo = () => {
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
               id="genres"
               select
@@ -269,7 +273,11 @@ const AddPreUploadVideo = () => {
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}></Grid>
+          <Grid item xs={12}>
+            <h3>Music Video Details</h3>
+          </Grid>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="title "
                 label="Video Title"
@@ -280,7 +288,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.title }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="thumbs "
                 // label="Video Thumbs"
@@ -291,7 +299,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.thumbs }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="teaser "
                 label="Video Teaser"
@@ -302,7 +310,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.teaser }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="trailer"
                 label="Video Trailer"
@@ -313,7 +321,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.trailer }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="main"
                 label="Main Video"
@@ -324,7 +332,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.main }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="strysynp "
                 label="Story synopsis"
@@ -338,7 +346,7 @@ const AddPreUploadVideo = () => {
           <Grid item xs={12}>
             <h3>Cast 1</h3>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="actorName "
                 label="Actor Name"
@@ -349,7 +357,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.actorName }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="actimg"
                 label="Actor Image"
@@ -360,7 +368,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.actimg }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="actressName "
                 label="Actress Name"
@@ -371,7 +379,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.actressName }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="actrimg"
                 label="Actress Image"
@@ -385,7 +393,7 @@ const AddPreUploadVideo = () => {
           <Grid item xs={12}>
             <h3>Supporting Actor 1</h3>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="actname"
                 label="Name"
@@ -396,7 +404,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.actname }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="supactimg"
                 label="Supporting Actor Image"
@@ -407,7 +415,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.supactimg }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="phnnumber"
                 label="Phone Number"
@@ -418,10 +426,11 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.phnnumber}
               />
           </Grid>
+          <Grid item xs={6} sm={3} md={6}></Grid>
           <Grid item xs={12}>
             <h3>Supporting Actress 1</h3>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="actrname"
                 label="Name"
@@ -432,7 +441,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.actrname }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="supactrimg"
                 label="Supporting Actress Image"
@@ -443,7 +452,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.supactrimg }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="phnnumber"
                 label="Phone Number"
@@ -454,10 +463,11 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.phnnumber}
               />
           </Grid>
+          <Grid item xs={6} sm={3} md={6}></Grid>
           <Grid item xs={12}>
             <h3>Directors 1</h3>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="directorname"
                 label="Name"
@@ -468,7 +478,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.directorname }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="directorimg"
                 label="Supporting Actress Image"
@@ -482,7 +492,7 @@ const AddPreUploadVideo = () => {
           <Grid item xs={12}>
             <h3>Writer 1</h3>
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <TextField
                 id="Writername"
                 label="Name"
@@ -493,7 +503,7 @@ const AddPreUploadVideo = () => {
                 value={videoDesc.preUploadVideo.Writername }
               />
           </Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          <Grid item xs={6} sm={3} md={6}>
             <Input
                 id="writerimg"
                 label="Supporting Actress Image"
@@ -505,7 +515,7 @@ const AddPreUploadVideo = () => {
               />
           </Grid>
           <Grid items xs={12} ></Grid>
-          <Grid item xs={6} sm={3} md={2}>
+          {/* <Grid item xs={6} sm={3} md={2}>
             <TextField
                 id="duration"
                 label="Duration"
@@ -702,8 +712,9 @@ const AddPreUploadVideo = () => {
                 type="text"
                 value={videoDesc.preUploadVideo.writer }
               />
-          </Grid>
+          </Grid> */}
         </Grid>
+        </Container>
       </form>
       <br />
       <br />
