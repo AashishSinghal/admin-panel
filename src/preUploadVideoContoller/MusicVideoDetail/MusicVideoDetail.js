@@ -24,17 +24,17 @@ const MusicVideoDetails = () => {
     setInputFields(values);
   };
 
-  const handleAddFields = () => {
-    const values = [...inputFields];
-    values.push({SuppActressName: '',  SuppActressimg: ''});
-    setInputFields(values);
-  };
+  // const handleAddFields = () => {
+  //   const values = [...inputFields];
+  //   values.push({SuppActressName: '',  SuppActressimg: ''});
+  //   setInputFields(values);
+  // };
 
-  const handleRemoveFields = index => {
-    const values = [...inputFields];
-    values.splice(index, 1);
-    setInputFields(values);
-  };
+  // const handleRemoveFields = index => {
+  //   const values = [...inputFields];
+  //   values.splice(index, 1);
+  //   setInputFields(values);
+  // };
 
   return (
     <>
@@ -42,35 +42,21 @@ const MusicVideoDetails = () => {
       <br/>
       <form onSubmit={handleSubmit}>
         <div className="container_pad">
-          {/* <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => handleAddFields()}
-          >
-            Add Supporting Actress
-          </button> */}
           {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
                 <h4>Music Video Details</h4>
-                  {/* <button
-                    className="btn btn-danger"
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    Remove
-                  </button> */}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
                   <label htmlFor="VideoDetail">Video Detail</label>
                   <input
                     type="text"
-                    placeholder="Supportng Actress Name"
+                    placeholder="Video Title"
                     className="form-control"
-                    id="VideoDetail"
-                    name="VideoDetail"
+                    id="title"
+                    name="title"
                     value={inputField.VideoDetail}
                     onChange={event => handleInputChange(index, event)}
                   />

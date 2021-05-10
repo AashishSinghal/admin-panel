@@ -80,12 +80,12 @@ const App = () => {
           <strong>File Download URI - </strong>
           <span>{response ? response.fileDownloadUri : "Not Available"}</span>
 
-          <i class="bi bi-clipboard"></i>
+          <i className="bi bi-clipboard"></i>
           <br />
         </div>
       </div>
       <br />
-      <AddPreUploadVideo  vdoUrl={response.fileDownloadUri}/>
+      <AddPreUploadVideo vdoUrl={response.fileDownloadUri} />
     </div>
   );
 };
