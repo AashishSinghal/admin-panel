@@ -5,20 +5,19 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddDirector = () => {
 
   const [inputFields, setInputFields] = useState([
-    { Name: '',  img: ''}
+    {
+      id:"0",
+      name: "",
+      imageUrl: "",
+    },
   ]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "DirectorName") {
-      values[index].DirectorName = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
     } else {
-      values[index].Directorimg = event.target.value;
+      values[index].imageUrl = event.target.value;
     }
 
     setInputFields(values);
@@ -26,7 +25,10 @@ const AddDirector = () => {
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({DirectorName: '',  Directorimg: '' });
+    values.push({
+    id:"",
+    name: "",
+    imageUrl: "",});
     setInputFields(values);
   };
 
@@ -38,7 +40,6 @@ const AddDirector = () => {
   return (
     <>
       <br/>
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           <button
             className="btn btn-primary"
@@ -70,8 +71,8 @@ const AddDirector = () => {
                     placeholder="Thomas Man"
                     className="form-control"
                     id="DirectorName"
-                    name="DirectorName"
-                    value={inputField.DirectorName}
+                    name="name"
+                    value={inputField.name}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -81,8 +82,8 @@ const AddDirector = () => {
                     type="file"
                     className="form-control"
                     id="Directorimg"
-                    name="Directorimg"
-                    value={inputField.Directorimg}
+                    name="imageUrl"
+                    value={inputField.imageUrl}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -104,7 +105,6 @@ const AddDirector = () => {
          <pre>
         {JSON.stringify(inputFields, null, 2)}
         </pre> 
-      </form>
     </>
   )
 }

@@ -5,22 +5,18 @@ import "bootstrap/dist/css/bootstrap.css";
 const EpisodeCast = () => {
   const [inputFields, setInputFields] = useState([
     {
+      id:"",
       name: "",
-      img: "",
+      imageUrl: "",
     },
   ]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
-
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "epsactorname") {
-      values[index].epsactorname = event.target.value;
-    } else if (event.target.name === "epsactorimg") {
-      values[index].epsactorimg = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
+    } else if (event.target.name === "imageUrl") {
+      values[index].imageUrl = event.target.value;
     } 
 
     setInputFields(values);
@@ -29,8 +25,9 @@ const EpisodeCast = () => {
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      epsactorname: "",
-      epsactorimg: "",
+      id:"",
+      name: "",
+      imageUrl: "",
     });
     setInputFields(values);
   };
@@ -44,7 +41,7 @@ const EpisodeCast = () => {
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br />
-      <form onSubmit={handleSubmit}>
+      <div>
         <div className="eps_container_pad">
           <button
             className="btn btn-primary"
@@ -69,26 +66,26 @@ const EpisodeCast = () => {
                   )}
                 </div>
                 <div className="row">
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="epsactorname">Name</label>
                     <input
                       type="text"
                       placeholder="Name"
                       className="form-control"
                       id="epsactorname"
-                      name="epsactorname"
-                      value={inputField.epsactorname}
+                      name="name"
+                      value={inputField.name}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="epsactorimg">Image</label>
                     <input
                       type="file"
                       className="form-control"
                       id="epsactorimg"
-                      name="epsactorimg"
-                      value={inputField.epsactorimg}
+                      name="imageUrl"
+                      value={inputField.imageUrl}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
@@ -110,7 +107,7 @@ const EpisodeCast = () => {
          <pre>
         {JSON.stringify(inputFields, null, 2)}
         </pre> 
-      </form>
+      </div>
     </>
   );
 };

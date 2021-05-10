@@ -5,20 +5,17 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddActor = () => {
   const [inputFields, setInputFields] = useState([
     {
+      id:"0",
       name: "",
-      img: "",
+      imageUrl: "",
     },
   ]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "CastActorName") {
-      values[index].CastActorName = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
     } else if (event.target.name === "CastActorimg") {
       values[index].CastActorimg = event.target.value;
     } 
@@ -29,10 +26,9 @@ const AddActor = () => {
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      CastActorName: "",
-      CastActorimg: "",
-      CastActressName: "",
-      CastActressimg: "",
+      id:"",
+      name: "",
+      imageUrl: "",
     });
     setInputFields(values);
   };
@@ -46,7 +42,6 @@ const AddActor = () => {
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br />
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           <button
             className="btn btn-primary"
@@ -78,8 +73,8 @@ const AddActor = () => {
                       placeholder="Acotor Name"
                       className="form-control"
                       id="CastActorName"
-                      name="CastActorName"
-                      value={inputField.CastActorName}
+                      name="name"
+                      value={inputField.name}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
@@ -110,7 +105,6 @@ const AddActor = () => {
         </div>*/}
         <br />
         <pre>{JSON.stringify(inputFields, null, 2)}</pre>
-      </form>
     </>
   );
 };
