@@ -35,10 +35,8 @@ const AddSupportingActress = () => {
     values.splice(index, 1);
     setInputFields(values);
   };
-  const index = 0;
   return (
     <>
-      {/* <h1>Dynamic Form Fields in React</h1> */}
       <br/>
       <form onSubmit={handleSubmit}>
         <div className="container_pad">
@@ -88,18 +86,6 @@ const AddSupportingActress = () => {
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
-                {/* <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="SuppActressnumber">Supportng Actress Number</label>
-                  <input
-                    type="text"
-                    placeholder="Supportng Actress Number"
-                    className="form-control"
-                    id="SuppActressnumber"
-                    name="SuppActressnumber"
-                    value={inputField.SuppActressnumber}
-                    onChange={event => handleInputChange(index, event)}
-                  />
-                </div> */}
               </div>
             </div>
           </Fragment>
@@ -113,11 +99,11 @@ const AddSupportingActress = () => {
           >
             Save
           </button>
-        </div>
+        </div>*/}
         <br/>
          <pre>
         {JSON.stringify(inputFields, null, 2)}
-        </pre> */}
+        </pre> 
       </form>
     </>
   )

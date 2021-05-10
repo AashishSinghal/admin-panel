@@ -35,7 +35,6 @@ const AddSupportingActor = () => {
     values.splice(index, 1);
     setInputFields(values);
   };
-  const index = 0;
   return (
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}

@@ -35,10 +35,8 @@ const AddDirector = () => {
     values.splice(index, 1);
     setInputFields(values);
   };
-
   return (
     <>
-      {/* <h1>Dynamic Form Fields in React</h1> */}
       <br/>
       <form onSubmit={handleSubmit}>
         <div className="container_pad">
@@ -101,11 +99,11 @@ const AddDirector = () => {
           >
             Save
           </button>
-        </div>
+        </div>*/}
         <br/>
          <pre>
         {JSON.stringify(inputFields, null, 2)}
-        </pre> */}
+        </pre> 
       </form>
     </>
   )

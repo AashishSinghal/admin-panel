@@ -37,7 +37,6 @@ const AddWriter = () => {
    
   return (
     <>
-      {/* <h1>Dynamic Form Fields in React</h1> */}
       <br/>
       <form onSubmit={handleSubmit}>
         <div className="container_pad">
@@ -93,19 +92,19 @@ const AddWriter = () => {
           </Fragment>
           ))}
         </div>
-        <div className="submit-button">
-          {/* <button
+        {/* <div className="submit-button">
+          <button
             className="btn btn-primary mr-2"
             type="submit"
             onSubmit={handleSubmit}
           >
             Save
-          </button> */}
-        </div>
-        {/* <br/>
+          </button> 
+        </div> */}
+        <br/>
          <pre>
         {JSON.stringify(inputFields, null, 2)}
-        </pre>  */}
+        </pre>  
       </form>
     </>
   )
