@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddWriter = () => {
 
   const [inputFields, setInputFields] = useState([
-    { WriterName: '',  Writerimg: '' }
+    { name: '',  img: ''}
   ]);
 
   const handleSubmit = e => {

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./preUploadvideo.css";
 import AddDirector from "./AddDirectors/AddDirectors";
 import AddWriter from "./AddWriters/AddWriters";
-import AddCast from "./AddCast/AddCast";
+import AddCast from "./AddCast/AddActor";
 import AddSupportingActor from "./AddSupportingActor/AddSupportngActor";
 import {
   languages,
@@ -17,6 +17,9 @@ import AddSupportingActress from "./AddSupportingActress/AddSupportingActress";
 import MusicVideoDetails from "./MusicVideoDetail/MusicVideoDetail";
 // import AddWriter from "./AddWriters/AddWriters";
 import { addPreUploadVideo } from "../APIs/addPreUploadVideo";
+import Episodes from "./Episodes/Episodes";
+import AddActor from "./AddCast/AddActor";
+import AddActress from "./AddCast/AddActress";
 
 const AddPreUploadVideo = ({ vdoUrl }) => {
   // const [videoFile, setVideoFile] = useState(null);
@@ -371,7 +374,9 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
           value={preUploadVideo.main}
         />
         <MusicVideoDetails />
-        <AddCast />
+        <Episodes />
+        <AddActor />
+        <AddActress/>
         <AddSupportingActor />
         <AddSupportingActress />
         <AddDirector/>

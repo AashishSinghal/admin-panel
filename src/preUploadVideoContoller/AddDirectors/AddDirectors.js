@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddDirector = () => {
 
   const [inputFields, setInputFields] = useState([
-    { DirectorName: '',  Directorimg: '' }
+    { Name: '',  img: ''}
   ]);
 
   const handleSubmit = e => {

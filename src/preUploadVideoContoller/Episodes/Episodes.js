@@ -1,11 +1,13 @@
 import React, { useState, Fragment } from "react";
 import '../../Components/component.css'
 import "bootstrap/dist/css/bootstrap.css";
+import EpisodeCast from "./EpisodesCast";
+import EpisodeSupportCast from "./EpisodeSuppCast";
 
-const AddSupportingActress = () => {
+const Episodes = () => {
 
   const [inputFields, setInputFields] = useState([
-    { name: '',  img: ''}
+    { description: '',  epsnumber: '', submitDate:'' }
   ]);
 
   const handleSubmit = e => {
@@ -15,18 +17,20 @@ const AddSupportingActress = () => {
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "SuppActressName") {
-      values[index].SuppActressName = event.target.value;
-    } else if (event.target.name === "SuppActressimg") {
-      values[index].SuppActressimg = event.target.value;
-    } 
+    if (event.target.name === "description") {
+      values[index].description = event.target.value;
+    } else if (event.target.name === "epsnumber") {
+      values[index].epsnumber = event.target.value;
+    } else if (event.target.name === "submitDate") {
+        values[index].submitDate = event.target.value;
+    }
 
     setInputFields(values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({SuppActressName: '',  SuppActressimg: ''});
+    values.push({description: '',  epsnumber: '', submitDate:'' });
     setInputFields(values);
   };
 
@@ -45,13 +49,13 @@ const AddSupportingActress = () => {
             type="button"
             onClick={() => handleAddFields()}
           >
-            Add Supporting Actress
+            Add Episodes
           </button>
           {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
-                <h4>Supporting Actress {index+1}</h4>
+                <h4>Episodes {index+1}</h4>
                 {index === 0 ? null : (
                     <button
                       className="btn btn-danger"
@@ -64,34 +68,51 @@ const AddSupportingActress = () => {
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="SuppActressName">Supportng Actress Name</label>
+                  <label htmlFor="description">Description</label>
                   <input
                     type="text"
-                    placeholder="Supportng Actress Name"
+                    placeholder="Episod Description"
                     className="form-control"
-                    id="SuppActressName"
-                    name="SuppActressName"
-                    value={inputField.SuppActressName}
+                    id="description"
+                    name="description"
+                    value={inputField.description}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
                 <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="SuppActressimg">Supportng Actress Image</label>
+                  <label htmlFor="epsnumber">Episod Number</label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Episod Number"
                     className="form-control"
-                    id="SuppActressimg"
-                    name="SuppActressimg"
-                    value={inputField.SuppActressimg}
+                    id="epsnumber"
+                    name="epsnumber"
+                    value={inputField.epsnumber}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
+                <div className="form-group col-sm-4 col-md-5">
+                  <label htmlFor="submitDate">Submit Date</label>
+                  <input
+                    type="text"
+                    placeholder="Submit Date"
+                    className="form-control"
+                    id="submitDate"
+                    name="submitDate"
+                    value={inputField.submitDate}
+                    onChange={event => handleInputChange(index, event)}
+                  />
+                </div>
+                <div className=" col-sm-4 col-md-5"></div>
+                <hr />
+                <EpisodeCast />
+                <EpisodeSupportCast />
               </div>
             </div>
           </Fragment>
           ))}
         </div>
-        {/* <div className="submit-button">
+        {/*<div className="submit-button">
           <button
             className="btn btn-primary mr-2"
             type="submit"
@@ -109,4 +130,4 @@ const AddSupportingActress = () => {
   )
 }
 
-export default AddSupportingActress;
+export default Episodes;

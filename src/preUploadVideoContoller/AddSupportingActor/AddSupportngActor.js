@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddSupportingActor = () => {
 
   const [inputFields, setInputFields] = useState([
-    { SuppActorName: '',  SuppActorimg: ''}
+    { name: '',  img: ''}
   ]);
 
   const handleSubmit = e => {
