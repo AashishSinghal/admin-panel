@@ -2,13 +2,11 @@ import React, { useState, Fragment } from "react";
 import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddCast = () => {
+const EpisodeCast = () => {
   const [inputFields, setInputFields] = useState([
     {
-      CastActorName: "",
-      CastActorimg: "",
-      CastActressName: "",
-      CastActressimg: "",
+      name: "",
+      img: "",
     },
   ]);
 
@@ -19,15 +17,11 @@ const AddCast = () => {
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "CastActorName") {
-      values[index].CastActorName = event.target.value;
-    } else if (event.target.name === "CastActorimg") {
-      values[index].CastActorimg = event.target.value;
-    } else if (event.target.name === "CastActressName") {
-      values[index].CastActressName = event.target.value;
-    } else {
-      values[index].CastActressimg = event.target.value;
-    }
+    if (event.target.name === "epsactorname") {
+      values[index].epsactorname = event.target.value;
+    } else if (event.target.name === "epsactorimg") {
+      values[index].epsactorimg = event.target.value;
+    } 
 
     setInputFields(values);
   };
@@ -35,10 +29,8 @@ const AddCast = () => {
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      CastActorName: "",
-      CastActorimg: "",
-      CastActressName: "",
-      CastActressimg: "",
+      epsactorname: "",
+      epsactorimg: "",
     });
     setInputFields(values);
   };
@@ -53,7 +45,7 @@ const AddCast = () => {
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br />
       <form onSubmit={handleSubmit}>
-        <div className="container_pad">
+        <div className="eps_container_pad">
           <button
             className="btn btn-primary"
             type="button"
@@ -65,7 +57,7 @@ const AddCast = () => {
             <Fragment key={`${inputField}~${index}`}>
               <div className="comp_border">
                 <div className="text_btn">
-                  <h4>Cast {index + 1}</h4>
+                  <h4>Episode Cast {index + 1}</h4>
                   {index === 0 ? null : (
                     <button
                       className="btn btn-danger"
@@ -78,48 +70,25 @@ const AddCast = () => {
                 </div>
                 <div className="row">
                   <div className="form-group col-sm-4 col-md-5">
-                    <label htmlFor="CastActorName">Actor Name</label>
+                    <label htmlFor="epsactorname">Name</label>
                     <input
                       type="text"
-                      placeholder="Acotor Name"
+                      placeholder="Name"
                       className="form-control"
-                      id="CastActorName"
-                      name="CastActorName"
-                      value={inputField.CastActorName}
+                      id="epsactorname"
+                      name="epsactorname"
+                      value={inputField.epsactorname}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
                   <div className="form-group col-sm-4 col-md-5">
-                    <label htmlFor="CastActorimg">Actor Image</label>
+                    <label htmlFor="epsactorimg">Image</label>
                     <input
                       type="file"
                       className="form-control"
-                      id="CastActorimg"
-                      name="CastActorimg"
-                      value={inputField.CastActorimg}
-                      onChange={(event) => handleInputChange(index, event)}
-                    />
-                  </div>
-                  <div className="form-group col-sm-4 col-md-5">
-                    <label htmlFor="CastActressName">Actress Name</label>
-                    <input
-                      type="text"
-                      placeholder="Actress Name"
-                      className="form-control"
-                      id="CastActressName"
-                      name="CastActressName"
-                      value={inputField.CastActressName}
-                      onChange={(event) => handleInputChange(index, event)}
-                    />
-                  </div>
-                  <div className="form-group col-sm-4 col-md-5">
-                    <label htmlFor="CastActressimg">Actress Image</label>
-                    <input
-                      type="file"
-                      className="form-control"
-                      id="CastActressimg"
-                      name="CastActressimg"
-                      value={inputField.CastActressimg}
+                      id="epsactorimg"
+                      name="epsactorimg"
+                      value={inputField.epsactorimg}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
@@ -137,11 +106,13 @@ const AddCast = () => {
             Save
           </button>
         </div>*/}
-        <br />
-        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+        <br/>
+         <pre>
+        {JSON.stringify(inputFields, null, 2)}
+        </pre> 
       </form>
     </>
   );
 };
 
-export default AddCast;
+export default EpisodeCast;
