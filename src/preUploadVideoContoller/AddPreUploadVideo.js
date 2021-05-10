@@ -1,7 +1,14 @@
-import { Grid, Input, MenuItem, TextField } from "@material-ui/core";
+import {
+  Grid,
+  Input,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@material-ui/core";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Container from "@material-ui/core/Container";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { uploadVideo } from "../APIs/uploadVideo";
 import "./preUploadvideo.css";
 import {
@@ -15,48 +22,58 @@ import {
 const AddPreUploadVideo = () => {
   const [videoFile, setVideoFile] = useState(null);
   const [fileSelectorDisabled, setFileSelectorDisabled] = useState(false);
+  const [genresArr, setGenresArr] = useState([]);
+  const [preUploadVideo, setPreUploadVideo] = useState({
+    cbfcrating: "",
+    description: "",
+    title: "",
+    videoType: "",
+    actorList: "",
+    actressList: "",
+    banners: "",
+    channelId: "",
+    directors: "",
+    duration: "",
+    eps: "",
+    genres: [],
+    id: "",
+    language: "",
+    likes: "",
+    numeps: "",
+    partNumber: "",
+    planType: "",
+    plans: "",
+    promo: "",
+    supportingActorList: "",
+    supportingActressList: "",
+    thumbs: "",
+    trailer: "",
+    main: "",
+    stysynp: "",
+    actorName: "",
+    actimg: "",
+    actressName: "",
+    actrimg: "",
+    name: "",
+    supactimg: "",
+    phnnumber: "",
+  });
   const [videoDetails, setVideoDesc] = useState({
-    preUploadVideo: {
-      cbfcrating: "",
-      description: "",
-      title: "",
-      videoType: "",
-      actorList: "",
-      actressList: "",
-      banners: "",
-      channelId: "",
-      directors: "",
-      duration: "",
-      eps: "",
-      genres: "",
-      id: "",
-      language: "",
-      likes: "",
-      numeps: "",
-      partNumber: "",
-      planType: "",
-      plans: "",
-      promo: "",
-      supportingActorList: "",
-      supportingActressList: "",
-      thumbs: "",
-      trailer: "",
-      main: "",
-      stysynp: "",
-      actorName: "",
-      actimg: "",
-      actressName: "",
-      actrimg: "",
-      name: "",
-      supactimg: "",
-      phnnumber: "",
-    },
+    preUploadVideo: {},
     genre: {
       genreName: "",
     },
     cast: {},
   });
   const [response, setResponse] = useState("");
+
+  useEffect(() => {
+    console.log("Change in preUploadVideo - ", preUploadVideo);
+    // console.log("Change in preUploadVideo-planType - ", preUploadVideo);
+    // return () => {
+    //   cleanup
+    // };
+  }, [preUploadVideo]);
 
   const handleFile = (e) => {
     let file = e.target.files[0];
@@ -84,7 +101,27 @@ const AddPreUploadVideo = () => {
   };
 
   const handleInputChange = (e) => {
-    setVideoDesc({ ...videoDetails, [e.target.name]: e.target.value });
+    switch (e.target.name) {
+      case "genres": {
+        setGenresArr(e.target.value);
+        let genres = [];
+        let values = e.target.value;
+        for (let i in values) {
+          genres.push({
+            genreName: values[i],
+          });
+          console.log(values[i], genres);
+        }
+        setPreUploadVideo({ ...preUploadVideo, genres: genres });
+        break;
+      }
+      default: {
+        setPreUploadVideo({
+          ...preUploadVideo,
+          [e.target.name]: e.target.value,
+        });
+      }
+    }
   };
 
   const handleVideoUploadFormSubmit = (e) => {
@@ -96,16 +133,19 @@ const AddPreUploadVideo = () => {
       <h1>Pre Upload Video</h1>
       <br />
       <form>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Grid container spacing={3} justify="space-around">
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="language"
                 select
                 label="Language"
-                value={videoDetails.languages}
-                onChange={handleVideotypeChange}
-                helperText="Please select Language type"
+                name="language"
+                value={preUploadVideo.language}
+                onChange={(e) => {
+                  handleInputChange(e);
+                }}
                 variant="outlined"
               >
                 {languages.map((type) => (
@@ -117,12 +157,13 @@ const AddPreUploadVideo = () => {
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="planType "
                 select
+                name="planType"
                 label="Plan Type"
-                value={videoDetails.planType}
-                onChange={handleVideotypeChange}
-                helperText="Please select plan type"
+                value={preUploadVideo.planType}
+                onChange={(e) => handleInputChange(e)}
                 variant="outlined"
               >
                 {planTypes.map((type) => (
@@ -137,21 +178,23 @@ const AddPreUploadVideo = () => {
                 id="description"
                 label="Video Description"
                 placeholder="description..."
-                label="Dscription"
+                name="description"
                 onChange={(e) => handleInputChange(e)}
                 aria-label="minimum height"
                 rowsMin={3}
-                value={videoDetails.preUploadVideo.description}
+                value={preUploadVideo.description}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}></Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="select-video-type"
                 select
                 label="Video Type"
-                value={videoDetails.videoType}
-                onChange={handleVideotypeChange}
+                name="videoType"
+                value={preUploadVideo.videoType}
+                onChange={(e) => handleInputChange(e)}
                 helperText="Please select video type"
                 variant="outlined"
               >
@@ -164,11 +207,13 @@ const AddPreUploadVideo = () => {
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="cbfcrating"
                 select
                 label="CBFC Rating"
-                value={videoDetails.cbfcrating}
-                onChange={handleVideotypeChange}
+                name="cbfcrating"
+                value={preUploadVideo.cbfcrating}
+                onChange={(e) => handleInputChange(e)}
                 helperText="Please select CBFC rating type"
                 variant="outlined"
               >
@@ -180,12 +225,43 @@ const AddPreUploadVideo = () => {
               </TextField>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
-              <TextField
+              {/* <InputLabel id="demo-mutiple-name-label">Genres</InputLabel> */}
+              <Select
+                className="input multiselect"
+                labelId="demo-mutiple-name-label"
+                id="genres"
+                placeholder="Genres"
+                multiple
+                name="genres"
+                value={genresArr}
+                onChange={(e) => handleInputChange(e)}
+                input={<Input />}
+                // MenuProps={MenuProps}
+                renderValue={(selected) => {
+                  if (selected.length === 0) {
+                    return <em>Placeholder</em>;
+                  }
+
+                  return selected.join(", ");
+                }}
+              >
+                <MenuItem disabled value="">
+                  <em>Genres</em>
+                </MenuItem>
+                {genres.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+              {/* <TextField
+                className="input textfield"
                 id="genres"
                 select
                 label="genres"
-                value={videoDetails.genres}
-                onChange={handleVideotypeChange}
+                name="genres"
+                value={preUploadVideo.genres}
+                onChange={(e) => handleInputChange(e)}
                 helperText="Please select Genres type"
                 variant="outlined"
               >
@@ -194,21 +270,24 @@ const AddPreUploadVideo = () => {
                     {type}
                   </MenuItem>
                 ))}
-              </TextField>
+              </TextField> */}
             </Grid>
             <Grid item xs={6} sm={3} md={6}></Grid>
             <Grid item xs={12}>
-              <h3>Music Video Details</h3>
+              <br />
+              <h3>Video File Details</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="title "
                 label="Video Title"
-                onChange=""
+                onChange={(e) => handleInputChange(e)}
                 placeholder="Video Title..."
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.title}
+                name="title"
+                value={preUploadVideo.title}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -216,11 +295,11 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="thumbs "
                 // label="Video Thumbs"
-                onChange=""
+                // onChange=""
                 // placeholder="Enter Thumbs"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.thumbs}
+                value={preUploadVideo.thumbs}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -228,11 +307,11 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="teaser "
                 label="Video Teaser"
-                onChange=""
+                // onChange=""
                 // placeholder="Enter Thumbs"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.teaser}
+                value={preUploadVideo.teaser}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -240,11 +319,11 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="trailer"
                 label="Video Trailer"
-                onChange=""
+                // onChange=""
                 placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.trailer}
+                value={preUploadVideo.trailer}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -252,36 +331,38 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="main"
                 label="Main Video"
-                onChange=""
+                // onChange=""
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.main}
+                value={preUploadVideo.main}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="strysynp "
                 label="Story synopsis"
-                onChange=""
+                // onChange=""
                 placeholder="Enter Story synopsis"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.strysynp}
+                value={preUploadVideo.strysynp}
               />
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <h3>Cast 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="actorName "
                 label="Actor Name"
-                onChange=""
+                // onChange=""
                 placeholder="Thomas Man"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.actorName}
+                value={preUploadVideo.actorName}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -289,22 +370,23 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="actimg"
                 label="Actor Image"
-                onChange=""
+                // onChange=""
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.actimg}
+                value={preUploadVideo.actimg}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="actressName "
                 label="Actress Name"
-                onChange=""
+                // onChange=""
                 placeholder="Mena txt"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.actressName}
+                value={preUploadVideo.actressName}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -312,25 +394,26 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="actrimg"
                 label="Actress Image"
-                onChange=""
+                // onChange=""
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.actrimg}
+                value={preUploadVideo.actrimg}
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid> */}
+            {/* <Grid item xs={12}>
               <h3>Supporting Actor 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="actname"
                 label="Name"
                 onChange={(e) => handleInputChange(e)}
                 placeholder="Name"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.actname}
+                value={preUploadVideo.actname}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -338,37 +421,39 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="supactimg"
                 label="Supporting Actor Image"
-                onChange=""
+                // onChange=""
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.supactimg}
+                value={preUploadVideo.supactimg}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="phnnumber"
                 label="Phone Number"
-                onChange=""
+                // onChange=""
                 placeholder="Phone Number"
                 required
                 type="number"
-                value={videoDetails.preUploadVideo.phnnumber}
+                value={preUploadVideo.phnnumber}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={6} sm={3} md={6}></Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <h3>Supporting Actress 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="actrname"
                 label="Name"
                 onChange={(e) => handleInputChange(e)}
                 placeholder="Name"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.actrname}
+                value={preUploadVideo.actrname}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -376,37 +461,39 @@ const AddPreUploadVideo = () => {
                 className="input"
                 id="supactrimg"
                 label="Supporting Actress Image"
-                onChange=""
+                // onChange=""
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.supactrimg}
+                value={preUploadVideo.supactrimg}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="phnnumber"
                 label="Phone Number"
-                onChange=""
+                // onChange=""
                 placeholder="Phone Number"
                 required
                 type="number"
-                value={videoDetails.preUploadVideo.phnnumber}
+                value={preUploadVideo.phnnumber}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={6} sm={3} md={6}></Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <h3>Directors 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="directorname"
                 label="Name"
                 onChange={(e) => handleInputChange(e)}
                 placeholder="Name"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.directorname}
+                value={preUploadVideo.directorname}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -418,21 +505,22 @@ const AddPreUploadVideo = () => {
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.directorimg}
+                value={preUploadVideo.directorimg}
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid> */}
+            {/* <Grid item xs={12}>
               <h3>Writer 1</h3>
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
               <TextField
+                className="input textfield"
                 id="Writername"
                 label="Name"
                 onChange={(e) => handleInputChange(e)}
                 placeholder="Name"
                 required
                 type="text"
-                value={videoDetails.preUploadVideo.Writername}
+                value={preUploadVideo.Writername}
               />
             </Grid>
             <Grid item xs={6} sm={3} md={6}>
@@ -444,10 +532,10 @@ const AddPreUploadVideo = () => {
                 // placeholder="trailer"
                 required
                 type="file"
-                value={videoDetails.preUploadVideo.writerimg}
+                value={preUploadVideo.writerimg}
               />
-            </Grid>
-            <Grid items xs={12}></Grid>
+            </Grid> */}
+            <Grid item xs={12}></Grid>
           </Grid>
         </Container>
       </form>
