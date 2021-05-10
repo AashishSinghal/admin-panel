@@ -35,7 +35,7 @@ const AddWriter = () => {
     values.splice(index, 1);
     setInputFields(values);
   };
-
+   
   return (
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
@@ -54,6 +54,7 @@ const AddWriter = () => {
             <div className="comp_border">
               <div className="text_btn">
                 <h4>Writer {index+1}</h4>
+                {/* {button} */}
                   <button
                     className="btn btn-danger"
                     type="button"
@@ -79,6 +80,7 @@ const AddWriter = () => {
                   <label htmlFor="Writerimg">Writer Image</label>
                   <input
                     type="file"
+                    multiple
                     className="form-control"
                     id="Writerimg"
                     name="Writerimg"
@@ -91,19 +93,19 @@ const AddWriter = () => {
           </Fragment>
           ))}
         </div>
-        {/*<div className="submit-button">
-          <button
+        <div className="submit-button">
+          {/* <button
             className="btn btn-primary mr-2"
             type="submit"
             onSubmit={handleSubmit}
           >
             Save
-          </button>
+          </button> */}
         </div>
         <br/>
          <pre>
         {JSON.stringify(inputFields, null, 2)}
-        </pre> */}
+        </pre> 
       </form>
     </>
   )
