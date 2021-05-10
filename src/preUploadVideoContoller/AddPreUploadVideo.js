@@ -207,7 +207,7 @@ const AddPreUploadVideo = () => {
             <Grid item xs={6} sm={3} md={6}>
               <TextareaAutosize
                 id="description"
-                label="Video Description"
+                // label="Video Description"
                 placeholder="description..."
                 label="Dscription"
                 onChange={(e) => handleInputChange(e)}
