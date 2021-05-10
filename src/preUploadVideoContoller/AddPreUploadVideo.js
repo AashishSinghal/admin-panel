@@ -4,13 +4,12 @@ import {
   Select,
   TextField,
   TextareaAutosize,
+  InputLabel,
 } from "@material-ui/core";
-// import  from "@material-ui/core/TextareaAutosize";
 import React, { useEffect, useState } from "react";
 import "./preUploadvideo.css";
 import AddDirector from "./AddDirectors/AddDirectors";
 import AddWriter from "./AddWriters/AddWriters";
-import AddCast from "./AddCast/AddActor";
 import AddSupportingActor from "./AddSupportingActor/AddSupportngActor";
 import {
   languages,
@@ -20,8 +19,6 @@ import {
   genres,
 } from "../Utils/Constants";
 import AddSupportingActress from "./AddSupportingActress/AddSupportingActress";
-import MusicVideoDetails from "./MusicVideoDetail/MusicVideoDetail";
-// import AddWriter from "./AddWriters/AddWriters";
 import { addPreUploadVideo } from "../APIs/addPreUploadVideo";
 import Episodes from "./Episodes/Episodes";
 import AddActor from "./AddCast/AddActor";
@@ -163,6 +160,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
     e.preventDefault();
     addPreUploadVideo(preUploadVideo).then((res) => {
       console.log("Details Response", res);
+      alert("Details Sent Successfully!");
       setResponse(res);
     });
   };
@@ -172,7 +170,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
       <h1>Pre Upload Video</h1>
       <br />
       <form>
-        <div className="basic__details container">
+        <div className="basic__details">
           <div className="basic__details__inner">
             <div className="row">
               <div className="col-md-4 col-sm-6 input__container">
@@ -250,35 +248,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 </TextField>
               </div>
               <div className="col-md-4 col-sm-6 input__container">
-                <Select
-                  className="input multiselect"
-                  labelId="demo-mutiple-name-label"
-                  id="genres"
-                  placeholder="Genres"
-                  multiple
-                  name="genres"
-                  value={genresArr}
-                  onChange={(e) => handleInputChange(e)}
-                  input={<Input />}
-                  // MenuProps={MenuProps}
-                  renderValue={(selected) => {
-                    if (selected.length === 0) {
-                      return <em>Placeholder</em>;
-                    }
-                    return selected.join(", ");
-                  }}
-                >
-                  <MenuItem disabled value="">
-                    <em>Genres</em>
-                  </MenuItem>
-                  {genres.map((name) => (
-                    <MenuItem key={name} value={name}>
-                      {name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </div>
-              <div className="col-md-4 col-sm-6 input__container">
                 <TextField
                   className="input textfield"
                   type="number"
@@ -327,11 +296,81 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 />
               </div>
               <div className="col-md-4 col-sm-6 input__container">
+                <TextField
+                  className="input textfield"
+                  id="vdoUrl"
+                  label="Video URL"
+                  onChange={(e) => handleInputChange(e)}
+                  variant="outlined"
+                  placeholder="Video URL"
+                  type="text"
+                  name="vdoUrl"
+                  value={vdoUrl}
+                />
+              </div>
+              <div className="col-md-4 col-sm-6 input__container">
+                <TextField
+                  className="input textfield"
+                  id="title"
+                  label="Video Title"
+                  onChange={(e) => handleInputChange(e)}
+                  variant="outlined"
+                  placeholder="Video Title..."
+                  type="text"
+                  name="title"
+                  value={preUploadVideo.title}
+                />
+              </div>
+              <div className="col-md-4 col-sm-6 input__container">
+                <TextField
+                  className="input textfield"
+                  id="thumbs"
+                  label="Thumbs"
+                  onChange={(e) => handleInputChange(e)}
+                  variant="outlined"
+                  placeholder="Thumbs"
+                  type="text"
+                  name="thumbs"
+                  value={preUploadVideo.title}
+                />
+              </div>
+              <div className="col-md-4 col-sm-6 input__container">
+                <InputLabel id="demo-mutiple-name-label">Genre</InputLabel>
+                <Select
+                  className="input multiselect"
+                  labelId="demo-mutiple-name-label"
+                  id="genres"
+                  multiple
+                  name="genres"
+                  placeholder="Genres"
+                  value={genresArr}
+                  onChange={(e) => handleInputChange(e)}
+                  variant="outlined"
+                  input={<Input />}
+                  // MenuProps={MenuProps}
+                  renderValue={(selected) => {
+                    if (selected.length === 0) {
+                      return <em>Placeholder</em>;
+                    }
+                    return selected.join(", ");
+                  }}
+                >
+                  <MenuItem disabled value="">
+                    <em>Genres</em>
+                  </MenuItem>
+                  {genres.map((name) => (
+                    <MenuItem key={name} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </div>
+              <div className="col-md-12 col-sm-12 col-md input__container">
                 <TextareaAutosize
                   className="input"
                   id="description"
                   // label="Video Description"
-                  placeholder="description..."
+                  placeholder="Description..."
                   name="description"
                   onChange={(e) => handleInputChange(e)}
                   aria-label="minimum height"
@@ -343,27 +382,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
           </div>
         </div>
 
-        <TextField
-          className="input textfield"
-          id="vdoUrl"
-          label="Video URL"
-          onChange={(e) => handleInputChange(e)}
-          placeholder="Video URL"
-          type="text"
-          name="vdoUrl"
-          value={vdoUrl}
-        />
-        <TextField
-          className="input textfield"
-          id="title "
-          label="Video Title"
-          onChange={(e) => handleInputChange(e)}
-          placeholder="Video Title..."
-          type="text"
-          name="title"
-          value={preUploadVideo.title}
-        />
-        <Input
+        {/* <Input
           className="input"
           id="thumbs "
           // label="Video Thumbs"
@@ -402,7 +421,8 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
           required
           type="file"
           value={preUploadVideo.main}
-        />
+        /> */}
+        <br />
         <div className="container_pad">
           <div className="comp_border">
             <div className="row">
@@ -484,10 +504,10 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
           </div>
         </div>
 
-        <MusicVideoDetails />
+        {/* <MusicVideoDetails /> */}
         <Episodes />
         <AddActor />
-        <AddActress/>
+        <AddActress />
         <AddSupportingActor />
         <AddSupportingActress />
         <AddDirector />
@@ -495,16 +515,18 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
       </form>
       <br />
       <br />
-      <button
-        type="button"
-        className="btn btn-success"
-        onClick={(e) => handleVideoUploadFormSubmit(e)}
-      >
-        Submit Details
-      </button>
+      <div className="success__btn">
+        <button
+          type="button"
+          className="btn btn-lg btn-success "
+          onClick={(e) => handleVideoUploadFormSubmit(e)}
+        >
+          Submit Details
+        </button>
+      </div>
       <br />
-      <>Response From the Server</>
       <div className="response">
+        <h1>Response From the Server</h1>
         <pre>
           <p>{JSON.stringify(response, null, 2)}</p>
         </pre>

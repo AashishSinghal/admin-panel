@@ -15,7 +15,7 @@ const App = () => {
     // };
   }, [files, response]);
 
-  const handleFilesChange = (e) => {
+  const handleFileUpload = (e) => {
     setLoading(true);
     let file = e.target[0].files[0];
     console.log("File event - ", e);
@@ -44,6 +44,7 @@ const App = () => {
         $("form p").text(this.files.length + " file(s) selected");
       }
     });
+    $(".server__details>i").on("click", function () {});
   });
 
   return (
@@ -51,7 +52,7 @@ const App = () => {
       <div className="upload">
         <form
           onSubmit={(e) => {
-            handleFilesChange(e);
+            handleFileUpload(e);
           }}
         >
           <div className="input-div">
@@ -78,8 +79,8 @@ const App = () => {
         <div className="server__details">
           {loading ? <div className="server__loading"></div> : null}
           <strong>File Download URI - </strong>
-          <span>{response ? response.fileDownloadUri : "Not Available"}</span>
-
+          <span>{response ? response.fileDownloadUri : "Loading..."}</span>
+          &nbsp; &nbsp;
           <i className="bi bi-clipboard"></i>
           <br />
         </div>
