@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import './AddDriectors.css'
+import '../../Components/component.css'
 import "bootstrap/dist/css/bootstrap.css";
 
 const AddDirector = () => {
@@ -54,13 +54,15 @@ const AddDirector = () => {
             <div className="comp_border">
               <div className="text_btn">
                 <h4>Director {index+1}</h4>
-                  <button
-                    className="btn btn-danger"
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    Remove
-                  </button>
+                {index === 0 ? null : (
+                    <button
+                      className="btn btn-danger"
+                      type="button"
+                      onClick={() => handleRemoveFields(index)}
+                    >
+                      Remove
+                    </button>
+                  )}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">

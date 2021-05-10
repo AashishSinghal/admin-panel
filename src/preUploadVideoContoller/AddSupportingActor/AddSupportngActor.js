@@ -1,10 +1,11 @@
 import React, { useState, Fragment } from "react";
+import '../../Components/component.css'
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddWriter = () => {
+const AddSupportingActor = () => {
 
   const [inputFields, setInputFields] = useState([
-    { WriterName: '',  Writerimg: '' }
+    { SuppActorName: '',  SuppActorimg: ''}
   ]);
 
   const handleSubmit = e => {
@@ -14,18 +15,18 @@ const AddWriter = () => {
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "WriterName") {
-      values[index].WriterName = event.target.value;
-    } else {
-      values[index].Writerimg = event.target.value;
-    }
+    if (event.target.name === "SuppActorName") {
+      values[index].SuppActorName = event.target.value;
+    } else if (event.target.name === "SuppActorimg") {
+      values[index].SuppActorimg = event.target.value;
+    } 
 
     setInputFields(values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({WriterName: '',  Writerimg: '' });
+    values.push({SuppActorName: '',  SuppActorimg: ''});
     setInputFields(values);
   };
 
@@ -34,7 +35,7 @@ const AddWriter = () => {
     values.splice(index, 1);
     setInputFields(values);
   };
-   
+
   return (
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
@@ -46,13 +47,13 @@ const AddWriter = () => {
             type="button"
             onClick={() => handleAddFields()}
           >
-            Add Writers
+            Add Supporting Actor
           </button>
           {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
-                <h4>Writer {index+1}</h4>
+                <h4>Supporting Actor {index+1}</h4>
                 {index === 0 ? null : (
                     <button
                       className="btn btn-danger"
@@ -65,26 +66,25 @@ const AddWriter = () => {
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="WriterName">Name</label>
+                  <label htmlFor="SuppActorName">Supportng Actor Name</label>
                   <input
                     type="text"
-                    placeholder="Thomas Man"
+                    placeholder="Supportng Actor Name"
                     className="form-control"
-                    id="WriterName"
-                    name="WriterName"
-                    value={inputField.WriterName}
+                    id="SuppActorName"
+                    name="SuppActorName"
+                    value={inputField.SuppActorName}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
                 <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="Writerimg">Writer Image</label>
+                  <label htmlFor="SuppActorimg">Supportng Actor Image</label>
                   <input
                     type="file"
-                    multiple
                     className="form-control"
-                    id="Writerimg"
-                    name="Writerimg"
-                    value={inputField.Writerimg}
+                    id="SuppActorimg"
+                    name="SuppActorimg"
+                    value={inputField.SuppActorimg}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -93,22 +93,22 @@ const AddWriter = () => {
           </Fragment>
           ))}
         </div>
-        <div className="submit-button">
-          {/* <button
+        {/* <div className="submit-button">
+          <button
             className="btn btn-primary mr-2"
             type="submit"
             onSubmit={handleSubmit}
           >
             Save
-          </button> */}
+          </button>
         </div>
-        {/* <br/>
-         <pre>
+        <br/>*/}
+         <pre> 
         {JSON.stringify(inputFields, null, 2)}
-        </pre>  */}
+        </pre>
       </form>
     </>
   )
 }
 
-export default AddWriter;
+export default AddSupportingActor;
