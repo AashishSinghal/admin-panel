@@ -1,0 +1,107 @@
+{
+  "id": 1759959570,
+  "title": "Naruto Shippuden S01E01",
+  "description": "string",
+  "likes": 0,
+  "channelId": 0,
+  "actorList": [
+    {
+      "id": 0,
+      "name": "string",
+      "imageUrl": "string"
+    }
+  ],
+  "actressList": [
+    {
+      "id": 0,
+      "name": "string",
+      "imageUrl": "string"
+    }
+  ],
+  "genres": [
+    {
+      "genreName": "string"
+    }
+  ],
+  "tralier": {
+    "id": 0,
+    "tralierUrl": "string",
+    "duaration": "string",
+    "submitDate": "string"
+  },
+  "promo": {
+    "id": 0,
+    "promoUrl": "string",
+    "duaration": "string",
+    "submitDate": "string"
+  },
+  "directors": [
+    {
+      "id": 0,
+      "dirName": "string"
+    }
+  ],
+  "eps": [
+    {
+      "id": 0,
+      "title": "string",
+      "description": "string",
+      "thumbs": "string",
+      "vdoUrl": "http://13.127.144.92:8886/home/tsspl/files/Naruto%20Shippuden%20-%20S01E01.mkv",
+      "episNumber": "string",
+      "submitDate": "string",
+      "casts": [
+        {
+          "id": 0,
+          "name": "string",
+          "imageUrl": "string"
+        }
+      ],
+      "supportingCast": [
+        {
+          "id": 0,
+          "name": "string",
+          "imageUrl": "string"
+        }
+      ]
+    }
+  ],
+  "writer": [
+    {
+      "id": 0,
+      "writerName": "string"
+    }
+  ],
+  "views": 0,
+  "videoType": "STANDARD",
+  "language": "string",
+  "thumbs": "string",
+  "planType": "BASIC",
+  "plans": ["string"],
+  "numeps": 0,
+  "partNumber": "string",
+  "vdoUrl": "http://13.127.144.92:8886/home/tsspl/files/Naruto%20Shippuden%20-%20S01E01.mkv",
+  "banners": [
+    {
+      "id": 0,
+      "thumbSize": "string",
+      "thumb": "string"
+    }
+  ],
+  "duration": 0.0,
+  "supportingActressList": [
+    {
+      "id": 0,
+      "name": "string",
+      "imageUrl": "string"
+    }
+  ],
+  "supportingActorList": [
+    {
+      "id": 0,
+      "name": "string",
+      "imageUrl": "string"
+    }
+  ],
+  "cbfcrating": "string"
+}
