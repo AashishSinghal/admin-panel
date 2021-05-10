@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import "./preUploadvideo.css";
 import AddDirector from "./AddDirectors/AddDirectors";
 import AddWriter from "./AddWriters/AddWriters";
-import AddCast from "./AddCast/AddActor";
 import AddSupportingActor from "./AddSupportingActor/AddSupportngActor";
 import {
   languages,
