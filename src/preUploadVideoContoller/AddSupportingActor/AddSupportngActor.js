@@ -5,20 +5,19 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddSupportingActor = () => {
 
   const [inputFields, setInputFields] = useState([
-    { name: '',  img: ''}
+    {
+      id:"0",
+      name: "",
+      imageUrl: "",
+    },
   ]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "SuppActorName") {
-      values[index].SuppActorName = event.target.value;
-    } else if (event.target.name === "SuppActorimg") {
-      values[index].SuppActorimg = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
+    } else if (event.target.name === "imageUrl") {
+      values[index].imageUrl = event.target.value;
     } 
 
     setInputFields(values);
@@ -26,7 +25,10 @@ const AddSupportingActor = () => {
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({SuppActorName: '',  SuppActorimg: ''});
+    values.push({ 
+    id:"",
+    name: "",
+    imageUrl: "",});
     setInputFields(values);
   };
 
@@ -39,7 +41,6 @@ const AddSupportingActor = () => {
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br/>
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           <button
             className="btn btn-primary"
@@ -71,8 +72,8 @@ const AddSupportingActor = () => {
                     placeholder="Supportng Actor Name"
                     className="form-control"
                     id="SuppActorName"
-                    name="SuppActorName"
-                    value={inputField.SuppActorName}
+                    name="name"
+                    value={inputField.name}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -82,8 +83,8 @@ const AddSupportingActor = () => {
                     type="file"
                     className="form-control"
                     id="SuppActorimg"
-                    name="SuppActorimg"
-                    value={inputField.SuppActorimg}
+                    name="imageUrl"
+                    value={inputField.imageUrl}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -105,7 +106,6 @@ const AddSupportingActor = () => {
          <pre> 
         {JSON.stringify(inputFields, null, 2)}
         </pre>
-      </form>
     </>
   )
 }

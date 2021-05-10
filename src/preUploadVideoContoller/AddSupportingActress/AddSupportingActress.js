@@ -5,20 +5,19 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddSupportingActress = () => {
 
   const [inputFields, setInputFields] = useState([
-    { name: '',  img: ''}
+    {
+      id:"0",
+      name: "",
+      imageUrl: "",
+    },
   ]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "SuppActressName") {
-      values[index].SuppActressName = event.target.value;
-    } else if (event.target.name === "SuppActressimg") {
-      values[index].SuppActressimg = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
+    } else if (event.target.name === "imageUrl") {
+      values[index].imageUrl = event.target.value;
     } 
 
     setInputFields(values);
@@ -26,7 +25,11 @@ const AddSupportingActress = () => {
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({SuppActressName: '',  SuppActressimg: ''});
+    values.push({
+      id:"",
+      name: "",
+      imageUrl: "",
+    });
     setInputFields(values);
   };
 
@@ -38,7 +41,6 @@ const AddSupportingActress = () => {
   return (
     <>
       <br/>
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           <button
             className="btn btn-primary"
@@ -70,8 +72,8 @@ const AddSupportingActress = () => {
                     placeholder="Supportng Actress Name"
                     className="form-control"
                     id="SuppActressName"
-                    name="SuppActressName"
-                    value={inputField.SuppActressName}
+                    name="name"
+                    value={inputField.name}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -81,8 +83,8 @@ const AddSupportingActress = () => {
                     type="file"
                     className="form-control"
                     id="SuppActressimg"
-                    name="SuppActressimg"
-                    value={inputField.SuppActressimg}
+                    name="imageUrl"
+                    value={inputField.imageUrl}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -104,7 +106,6 @@ const AddSupportingActress = () => {
          <pre>
         {JSON.stringify(inputFields, null, 2)}
         </pre> 
-      </form>
     </>
   )
 }

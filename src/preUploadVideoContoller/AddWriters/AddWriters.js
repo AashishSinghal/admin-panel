@@ -3,20 +3,19 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const AddWriter = () => {
   const [inputFields, setInputFields] = useState([
-    { name: '',  img: ''}
+    {
+      id:"0",
+      name: "",
+      imageUrl: "",
+    },
   ]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "WriterName") {
-      values[index].WriterName = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
     } else {
-      values[index].Writerimg = event.target.value;
+      values[index].imageUrl = event.target.value;
     }
 
     setInputFields(values);
@@ -24,7 +23,11 @@ const AddWriter = () => {
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({ WriterName: "", Writerimg: "" });
+    values.push({
+      id:"",
+      name: "",
+      imageUrl: "",
+    });
     setInputFields(values);
   };
 
@@ -37,7 +40,6 @@ const AddWriter = () => {
   return (
     <>
       <br />
-      <form onSubmit={handleSubmit}>
       <div className="container_pad">
         <button
           className="btn btn-primary"
@@ -69,8 +71,8 @@ const AddWriter = () => {
                     placeholder="Thomas Man"
                     className="form-control"
                     id="WriterName"
-                    name="WriterName"
-                    value={inputField.WriterName}
+                    name="name"
+                    value={inputField.name}
                     onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
@@ -81,8 +83,8 @@ const AddWriter = () => {
                     multiple
                     className="form-control"
                     id="Writerimg"
-                    name="Writerimg"
-                    value={inputField.Writerimg}
+                    name="imageUrl"
+                    value={inputField.imageUrl}
                     onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
@@ -102,7 +104,6 @@ const AddWriter = () => {
         </div> */}
       <br />
       <pre>{JSON.stringify(inputFields, null, 2)}</pre>
-      </form>
     </>
   );
 };

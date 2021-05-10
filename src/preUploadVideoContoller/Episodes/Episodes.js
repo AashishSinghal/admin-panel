@@ -7,7 +7,7 @@ import EpisodeSupportCast from "./EpisodeSuppCast";
 const Episodes = () => {
 
   const [inputFields, setInputFields] = useState([
-    { description: '',  epsnumber: '', submitDate:'' }
+    { description: '',  episNumber: '', submitDate:'', videoThumb:'' }
   ]);
 
   const handleSubmit = e => {
@@ -19,18 +19,20 @@ const Episodes = () => {
     const values = [...inputFields];
     if (event.target.name === "description") {
       values[index].description = event.target.value;
-    } else if (event.target.name === "epsnumber") {
-      values[index].epsnumber = event.target.value;
+    } else if (event.target.name === "episNumber") {
+      values[index].episNumber = event.target.value;
     } else if (event.target.name === "submitDate") {
         values[index].submitDate = event.target.value;
-    }
+    } else if (event.target.name === "videoThumb") {
+      values[index].videoThumb = event.target.value;
+  }
 
     setInputFields(values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({description: '',  epsnumber: '', submitDate:'' });
+    values.push({description: '',  episNumber: '', submitDate:'', videoThumb:'' });
     setInputFields(values);
   };
 
@@ -71,7 +73,7 @@ const Episodes = () => {
                   <label htmlFor="description">Description</label>
                   <input
                     type="text"
-                    placeholder="Episod Description"
+                    placeholder="Episode Description"
                     className="form-control"
                     id="description"
                     name="description"
@@ -80,14 +82,14 @@ const Episodes = () => {
                   />
                 </div>
                 <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="epsnumber">Episod Number</label>
+                  <label htmlFor="episNumber">Episod Number</label>
                   <input
                     type="text"
-                    placeholder="Episod Number"
+                    placeholder="Episode Number"
                     className="form-control"
-                    id="epsnumber"
-                    name="epsnumber"
-                    value={inputField.epsnumber}
+                    id="episNumber"
+                    name="episNumber"
+                    value={inputField.episNumber}
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
@@ -103,7 +105,18 @@ const Episodes = () => {
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
-                <div className=" col-sm-4 col-md-5"></div>
+                <div className="form-group col-sm-4 col-md-5">
+                  <label htmlFor="VideoThumb">Video Thumb</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Video Thumb"
+                    id="VideoThumb"
+                    name="videoThumb"
+                    value={inputField.videoThumb}
+                    onChange={event => handleInputChange(index, event)}
+                  />
+                </div>
                 <hr />
                 <EpisodeCast />
                 <EpisodeSupportCast />

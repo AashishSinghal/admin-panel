@@ -5,22 +5,18 @@ import "bootstrap/dist/css/bootstrap.css";
 const AddActress = () => {
   const [inputFields, setInputFields] = useState([
     {
+      id:"0",
       name: "",
-      img: "",
+      imageUrl: "",
     },
   ]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
-
+  
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
-    if (event.target.name === "CastActorName") {
-      values[index].CastActorName = event.target.value;
-    } else if (event.target.name === "CastActorimg") {
-      values[index].CastActorimg = event.target.value;
+    if (event.target.name === "name") {
+      values[index].name = event.target.value;
+    } else if (event.target.name === "imageUrl") {
+      values[index].imageUrl = event.target.value;
     } 
 
     setInputFields(values);
@@ -29,8 +25,9 @@ const AddActress = () => {
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      CastActorName: "",
-      CastActorimg: "",
+      id:"",
+      name: "",
+      imageUrl: "",
     });
     setInputFields(values);
   };
@@ -44,7 +41,6 @@ const AddActress = () => {
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br />
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           <button
             className="btn btn-primary"
@@ -76,8 +72,8 @@ const AddActress = () => {
                       placeholder="Actress Name"
                       className="form-control"
                       id="CastActressName"
-                      name="CastActressName"
-                      value={inputField.CastActressName}
+                      name="name"
+                      value={inputField.name}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
@@ -87,8 +83,8 @@ const AddActress = () => {
                       type="file"
                       className="form-control"
                       id="CastActressimg"
-                      name="CastActressimg"
-                      value={inputField.CastActressimg}
+                      name="imageUrl"
+                      value={inputField.imageUrl}
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
@@ -110,7 +106,6 @@ const AddActress = () => {
          <pre>
         {JSON.stringify(inputFields, null, 2)}
         </pre> 
-      </form>
     </>
   );
 };
