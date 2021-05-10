@@ -108,10 +108,8 @@ const AddActor = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         <pre>
-        {JSON.stringify(inputFields, null, 2)}
-        </pre> 
+        <br />
+        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
       </form>
     </>
   );
