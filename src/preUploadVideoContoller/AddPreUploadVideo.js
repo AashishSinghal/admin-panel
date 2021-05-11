@@ -122,6 +122,33 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
     // };
   }, [preUploadVideo]);
 
+  const handleChildData = (name, data) => {
+    // e.preventDefault();
+    switch (name) {
+      case "director":
+        setPreUploadVideo({ ...preUploadVideo, directors: data });
+        break;
+      case "actor":
+        break;
+      case "actress":
+        break;
+      case "supportingActor":
+        break;
+      case "supportingActoress":
+        break;
+      case "writers":
+        setPreUploadVideo({ ...preUploadVideo, writer: data });
+        break;
+      case "episodes":
+        setPreUploadVideo({ ...preUploadVideo, eps: data });
+        break;
+      default:
+        console.log("invalid Data field");
+        break;
+    }
+    console.log(`Data from ${name}`, data);
+  };
+
   const handlePromoChange = (e) => {
     setPromo({ ...promo, [e.target.name]: e.target.value });
     setPreUploadVideo({ ...preUploadVideo, promo: promo });
@@ -381,47 +408,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
             </div>
           </div>
         </div>
-
-        {/* <Input
-          className="input"
-          id="thumbs "
-          // label="Video Thumbs"
-          // onChange=""
-          // placeholder="Enter Thumbs"
-          required
-          type="file"
-          value={preUploadVideo.thumbs}
-        />
-        <Input
-          className="input"
-          id="teaser "
-          label="Video Teaser"
-          // onChange=""
-          // placeholder="Enter Thumbs"
-          required
-          type="file"
-          value={preUploadVideo.teaser}
-        />
-        <Input
-          className="input"
-          id="trailer"
-          label="Video Trailer"
-          // onChange=""
-          placeholder="trailer"
-          required
-          type="file"
-          value={preUploadVideo.trailer}
-        />
-        <Input
-          className="input"
-          id="main"
-          label="Main Video"
-          // onChange=""
-          // placeholder="trailer"
-          required
-          type="file"
-          value={preUploadVideo.main}
-        /> */}
         <br />
         <div className="container_pad">
           <div className="comp_border">
@@ -505,13 +491,13 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
         </div>
 
         {/* <MusicVideoDetails /> */}
-        <Episodes />
-        <AddActor />
-        <AddActress />
-        <AddSupportingActor />
-        <AddSupportingActress />
-        <AddDirector />
-        <AddWriter />
+        <Episodes exportData={handleChildData} />
+        <AddActor exportData={handleChildData} />
+        <AddActress exportData={handleChildData} />
+        <AddSupportingActor exportData={handleChildData} />
+        <AddSupportingActress exportData={handleChildData} />
+        <AddDirector exportData={handleChildData} />
+        <AddWriter exportData={handleChildData} />
       </form>
       <br />
       <br />

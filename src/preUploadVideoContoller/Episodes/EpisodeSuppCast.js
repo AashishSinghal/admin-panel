@@ -2,15 +2,14 @@ import React, { useState, Fragment } from "react";
 import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const EpisodeSupportCast = () => {
+const EpisodeSupportCast = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     },
   ]);
-
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
@@ -18,15 +17,16 @@ const EpisodeSupportCast = () => {
       values[index].name = event.target.value;
     } else if (event.target.name === "imageUrl") {
       values[index].imageUrl = event.target.value;
-    } 
+    }
 
     setInputFields(values);
+    exportData("supportingCast", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     });
@@ -104,11 +104,9 @@ const EpisodeSupportCast = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         <pre>
-        {JSON.stringify(inputFields, null, 3)}
-        </pre> 
-        </div>
+        <br />
+        <pre>{JSON.stringify(inputFields, null, 3)}</pre>
+      </div>
     </>
   );
 };

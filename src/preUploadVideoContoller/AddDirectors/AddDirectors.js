@@ -1,12 +1,11 @@
 import React, { useState, Fragment } from "react";
-import '../../Components/component.css'
+import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddDirector = () => {
-
+const AddDirector = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"0",
+      id: "0",
       name: "",
       imageUrl: "",
     },
@@ -21,47 +20,49 @@ const AddDirector = () => {
     }
 
     setInputFields(values);
+    exportData("director", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-    id:"",
-    name: "",
-    imageUrl: "",});
+      id: "",
+      name: "",
+      imageUrl: "",
+    });
     setInputFields(values);
   };
 
-  const handleRemoveFields = index => {
+  const handleRemoveFields = (index) => {
     const values = [...inputFields];
     values.splice(index, 1);
     setInputFields(values);
   };
   return (
     <>
-      <br/>
-        <div className="container_pad">
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => handleAddFields()}
-          >
-            Add Directors
-          </button>
-          {inputFields.map((inputField, index) => (
+      <br />
+      <div className="container_pad">
+        <button
+          className="btn btn-primary"
+          type="button"
+          onClick={() => handleAddFields()}
+        >
+          Add Directors
+        </button>
+        {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
-                <h4>Director {index+1}</h4>
+                <h4>Director {index + 1}</h4>
                 {index === 0 ? null : (
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      onClick={() => handleRemoveFields(index)}
-                    >
-                      Remove
-                    </button>
-                  )}
+                  <button
+                    className="btn btn-danger"
+                    type="button"
+                    onClick={() => handleRemoveFields(index)}
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
@@ -73,7 +74,7 @@ const AddDirector = () => {
                     id="DirectorName"
                     name="name"
                     value={inputField.name}
-                    onChange={event => handleInputChange(index, event)}
+                    onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
                 <div className="form-group col-sm-4 col-md-5">
@@ -84,15 +85,15 @@ const AddDirector = () => {
                     id="Directorimg"
                     name="imageUrl"
                     value={inputField.imageUrl}
-                    onChange={event => handleInputChange(index, event)}
+                    onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
               </div>
             </div>
           </Fragment>
-          ))}
-        </div>
-        {/*<div className="submit-button">
+        ))}
+      </div>
+      {/*<div className="submit-button">
           <button
             className="btn btn-primary mr-2"
             type="submit"
@@ -101,12 +102,10 @@ const AddDirector = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         <pre>
-        {JSON.stringify(inputFields, null, 2)}
-        </pre> 
+      <br />
+      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
     </>
-  )
-}
+  );
+};
 
 export default AddDirector;

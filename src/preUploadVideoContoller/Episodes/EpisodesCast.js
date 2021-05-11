@@ -2,10 +2,10 @@ import React, { useState, Fragment } from "react";
 import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const EpisodeCast = () => {
+const EpisodeCast = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     },
@@ -17,15 +17,16 @@ const EpisodeCast = () => {
       values[index].name = event.target.value;
     } else if (event.target.name === "imageUrl") {
       values[index].imageUrl = event.target.value;
-    } 
+    }
 
     setInputFields(values);
+    exportData("cast", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     });
@@ -103,10 +104,8 @@ const EpisodeCast = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         <pre>
-        {JSON.stringify(inputFields, null, 2)}
-        </pre> 
+        <br />
+        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
       </div>
     </>
   );

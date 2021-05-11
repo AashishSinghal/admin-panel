@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddWriter = () => {
+const AddWriter = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
       id:"0",
@@ -19,6 +19,7 @@ const AddWriter = () => {
     }
 
     setInputFields(values);
+    exportData("writers", values);
   };
 
   const handleAddFields = () => {

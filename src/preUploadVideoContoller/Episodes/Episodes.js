@@ -1,129 +1,170 @@
-import React, { useState, Fragment } from "react";
-import '../../Components/component.css'
+import React, { useState, Fragment, useEffect } from "react";
+import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 import EpisodeCast from "./EpisodesCast";
 import EpisodeSupportCast from "./EpisodeSuppCast";
 
-const Episodes = () => {
-
+const Episodes = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
-    { description: '',  episNumber: '', submitDate:'', videoThumb:'' }
+    {
+      description: "",
+      episNumber: "",
+      submitDate: "",
+      thumb: "",
+      casts: [],
+      supportingCast: [],
+    },
   ]);
 
-  const handleSubmit = e => {
+  useEffect(() => {
+    console.log("Episode Details - ", inputFields);
+
+    // return () => {
+    //   cleanup
+    // };
+  }, [inputFields, exportData]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("inputFields", inputFields);
   };
 
-  const handleInputChange = (index, event) => {
+  const handleInputChange = (event) => {
     const values = [...inputFields];
     if (event.target.name === "description") {
-      values[index].description = event.target.value;
+      values[0].description = event.target.value;
     } else if (event.target.name === "episNumber") {
-      values[index].episNumber = event.target.value;
+      values[0].episNumber = event.target.value;
     } else if (event.target.name === "submitDate") {
-        values[index].submitDate = event.target.value;
-    } else if (event.target.name === "videoThumb") {
-      values[index].videoThumb = event.target.value;
-  }
-
+      values[0].submitDate = event.target.value;
+    } else if (event.target.name === "thumb") {
+      values[0].thumb = event.target.value;
+    }
     setInputFields(values);
+    exportData("episodes", inputFields);
   };
 
-  const handleAddFields = () => {
+  // const handleChildData = (index, name, data) => {
+  //   switch (name) {
+  //     case "cast":
+  //       setInputFields({ ...inputFields, casts: data });
+  //       break;
+  //     case "supportingCast":
+  //       setInputFields({ ...inputFields, supportingCast: data });
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   console.log(index, name, data);
+  // };
+
+  const handleChildData = (name, data) => {
     const values = [...inputFields];
-    values.push({description: '',  episNumber: '', submitDate:'', videoThumb:'' });
+    switch (name) {
+      case "cast":
+        values[0].casts = data;
+        break;
+      case "supportingCast":
+        values[0].supportingCast = data;
+        break;
+      default:
+        break;
+    }
     setInputFields(values);
+    console.log(name, data, "Mutated Object - ", values);
+    exportData("episodes", inputFields);
   };
 
-  const handleRemoveFields = index => {
-    const values = [...inputFields];
-    values.splice(index, 1);
-    setInputFields(values);
-  };
+  // const handleAddFields = () => {
+  //   const values = [...inputFields];
+  //   values.push({
+  //     description: "",
+  //     episNumber: "",
+  //     submitDate: "",
+  //     thumb: "",
+  //   });
+  //   setInputFields(values);
+  // };
+
+  // const handleRemoveFields = (index) => {
+  //   const values = [...inputFields];
+  //   values.splice(index, 1);
+  //   setInputFields(values);
+  // };
   return (
     <>
-      <br/>
+      <br />
       <form onSubmit={handleSubmit}>
         <div className="container_pad">
-          <button
+          {/* <button
             className="btn btn-primary"
             type="button"
             onClick={() => handleAddFields()}
           >
             Add Episodes
-          </button>
-          {inputFields.map((inputField, index) => (
-          <Fragment key={`${inputField}~${index}`}>
-            <div className="comp_border">
-              <div className="text_btn">
-                <h4>Episodes {index+1}</h4>
-                {index === 0 ? null : (
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      onClick={() => handleRemoveFields(index)}
-                    >
-                      Remove
-                    </button>
-                  )}
-              </div>
-              <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="description">Description</label>
-                  <input
-                    type="text"
-                    placeholder="Episode Description"
-                    className="form-control"
-                    id="description"
-                    name="description"
-                    value={inputField.description}
-                    onChange={event => handleInputChange(index, event)}
-                  />
-                </div>
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="episNumber">Episod Number</label>
-                  <input
-                    type="text"
-                    placeholder="Episode Number"
-                    className="form-control"
-                    id="episNumber"
-                    name="episNumber"
-                    value={inputField.episNumber}
-                    onChange={event => handleInputChange(index, event)}
-                  />
-                </div>
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="submitDate">Submit Date</label>
-                  <input
-                    type="text"
-                    placeholder="Submit Date"
-                    className="form-control"
-                    id="submitDate"
-                    name="submitDate"
-                    value={inputField.submitDate}
-                    onChange={event => handleInputChange(index, event)}
-                  />
-                </div>
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="VideoThumb">Video Thumb</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Video Thumb"
-                    id="VideoThumb"
-                    name="videoThumb"
-                    value={inputField.videoThumb}
-                    onChange={event => handleInputChange(index, event)}
-                  />
-                </div>
-                <hr />
-                <EpisodeCast />
-                <EpisodeSupportCast />
-              </div>
+          </button> */}
+          {/* {inputFields.map((inputField, index) => (
+            <Fragment key={`${inputField}~${index}`}> */}
+          <div className="comp_border">
+            <div className="text_btn">
+              <h4>Episodes Details</h4>
             </div>
-          </Fragment>
-          ))}
+            <div className="row">
+              <div className="form-group col-sm-4 col-md-6">
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  placeholder="Episode Description"
+                  className="form-control"
+                  id="description"
+                  name="description"
+                  value={inputFields.description}
+                  onChange={(event) => handleInputChange(event)}
+                />
+              </div>
+              <div className="form-group col-sm-4 col-md-6">
+                <label htmlFor="episNumber">Episod Number</label>
+                <input
+                  type="text"
+                  placeholder="Episode Number"
+                  className="form-control"
+                  id="episNumber"
+                  name="episNumber"
+                  value={inputFields.episNumber}
+                  onChange={(event) => handleInputChange(event)}
+                />
+              </div>
+              <div className="form-group col-sm-4 col-md-6">
+                <label htmlFor="submitDate">Submit Date</label>
+                <input
+                  type="text"
+                  placeholder="Submit Date"
+                  className="form-control"
+                  id="submitDate"
+                  name="submitDate"
+                  value={inputFields.submitDate}
+                  onChange={(event) => handleInputChange(event)}
+                />
+              </div>
+              <div className="form-group col-sm-4 col-md-6">
+                <label htmlFor="VideoThumb">Video Thumb</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Video Thumb"
+                  id="VideoThumb"
+                  name="thumb"
+                  value={inputFields.thumb}
+                  onChange={(event) => handleInputChange(event)}
+                />
+              </div>
+              <hr />
+              <EpisodeCast exportData={handleChildData} />
+              <EpisodeSupportCast exportData={handleChildData} />
+            </div>
+          </div>
+          {/* </Fragment>
+          ))} */}
         </div>
         {/*<div className="submit-button">
           <button
@@ -134,13 +175,11 @@ const Episodes = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         <pre>
-        {JSON.stringify(inputFields, null, 2)}
-        </pre> 
+        <br />
+        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
       </form>
     </>
-  )
-}
+  );
+};
 
 export default Episodes;

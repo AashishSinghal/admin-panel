@@ -44,7 +44,9 @@ const App = () => {
         $("form p").text(this.files.length + " file(s) selected");
       }
     });
-    $(".server__details>i").on("click", function () {});
+    $(".server__details>i").on("click", function () {
+      
+    });
   });
 
   return (
