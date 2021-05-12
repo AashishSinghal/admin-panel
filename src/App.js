@@ -78,104 +78,106 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-      <div className="upload">
-        <form
-          onSubmit={(e) => {
-            handleFileUpload(e);
-          }}
-        >
-          <div className="input-div">
-            {/* File Input Over Here */}
-            <input
-              type="file"
-              multiple
-              onChange={(e) => {
-                console.log("Files - ", e.target.files[0]);
-              }}
-            />
-            <p>Drag your files here or click in this area.</p>
-          </div>
-          <button type="submit">
-            <i className="bi bi-upload"></i> &nbsp;Upload
-          </button>
-        </form>
-      </div>
-      <br />
-      <ul className="nav nav-tabs" id="myTab" role="tablist">
-        {[...files].map((file, index) => {
-          console.log("JSX Mapping -", file);
-          return (
-            <li key={index} className="nav-item" role="presentation">
-              <a
-                className={index === 0 ? "nav-link active" : "nav-link"}
-                id="home-tab"
-                data-toggle="tab"
-                href={`#tab${index}`}
-                role="tab"
-                aria-controls="home"
-                aria-selected="true"
-              >
-                File - {index + 1}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <div className="tab-content" id="myTabContent">
-        {[...files].map((file, index) => {
-          return (
-            <div
-              key={index}
-              className={
-                index === 0 ? "tab-pane fade show active" : "tab-pane fade"
-              }
-              id={`tab${index}`}
-              role="tabpanel"
-              aria-labelledby="home-tab"
-            >
-              <div className="video__details">
-                <div className="upload__details">
-                  <strong>File Name - </strong>
-                  {files ? file.name : "Not Available"}
-                  <br />
-                  <strong>File Size - </strong>
-                  {files
-                    ? files[index].size / (1024 * 1024) + " MB"
-                    : "Not Available"}
-                  <br />
-                  <strong>File Type - </strong>
-                  {/* {files ? files[0].type : "Not Available"} */}
-                  <br />
-                </div>
-                <div className="server__details">
-                  <strong>File Download URI - </strong>
-                  {loading ? "Loading ..." : null}
-                  <span className={`videoUrl__span${index}`}>
-                    {response.length > 0
-                      ? responseURL(file.name)
-                      : "waiting For response..."}
-                  </span>
-                  &nbsp; &nbsp;
-                  <button
-                    type="button"
-                    className="btn btn-outline-success"
-                    onClick={() => copyToClipboard(index)}
-                  >
-                    <i className="bi bi-clipboard"></i>
-                  </button>
-                  <br />
-                </div>
-              </div>
-              <br />
-              <AddPreUploadVideo vdoUrl={response.fileDownloadUri} />
+    <div className="App main_wrapper_box">
+      <div className="inner_wrapper_box">
+        <div className="upload">
+          <form
+            onSubmit={(e) => {
+              handleFileUpload(e);
+            }}
+          >
+            <div className="input-div">
+              {/* File Input Over Here */}
+              <input
+                type="file"
+                multiple
+                onChange={(e) => {
+                  console.log("Files - ", e.target.files[0]);
+                }}
+              />
+              <p>Drag your files here or click in this area.</p>
             </div>
-          );
-        })}
+            <button type="submit">
+              <i className="bi bi-upload"></i> <span>Upload</span>
+            </button>
+          </form>
+        </div>
+        <br />
+        <ul className="nav nav-tabs" id="myTab" role="tablist">
+          {[...files].map((file, index) => {
+            console.log("JSX Mapping -", file);
+            return (
+              <li key={index} className="nav-item" role="presentation">
+                <a
+                  className={index === 0 ? "nav-link active" : "nav-link"}
+                  id="home-tab"
+                  data-toggle="tab"
+                  href={`#tab${index}`}
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                >
+                  File - {index + 1}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="tab-content" id="myTabContent">
+          {[...files].map((file, index) => {
+            return (
+              <div
+                key={index}
+                className={
+                  index === 0 ? "tab-pane fade show active" : "tab-pane fade"
+                }
+                id={`tab${index}`}
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <div className="video__details">
+                  <div className="upload__details">
+                    <strong>File Name - </strong>
+                    {files ? file.name : "Not Available"}
+                    <br />
+                    <strong>File Size - </strong>
+                    {files
+                      ? files[index].size / (1024 * 1024) + " MB"
+                      : "Not Available"}
+                    <br />
+                    <strong>File Type - </strong>
+                    {/* {files ? files[0].type : "Not Available"} */}
+                    <br />
+                  </div>
+                  <div className="server__details">
+                    <strong>File Download URI - </strong>
+                    {loading ? "Loading ..." : null}
+                    <span className={`videoUrl__span${index}`}>
+                      {response.length > 0
+                        ? responseURL(file.name)
+                        : "waiting For response..."}
+                    </span>
+                    &nbsp; &nbsp;
+                    <button
+                      type="button"
+                      className="btn btn-outline-success"
+                      onClick={() => copyToClipboard(index)}
+                    >
+                      <i className="bi bi-clipboard"></i>
+                    </button>
+                    <br />
+                  </div>
+                </div>
+                <br />
+                <AddPreUploadVideo vdoUrl={response.fileDownloadUri} />
+              </div>
+            );
+          })}
+        </div>
+        <br />
+        <br />
+        <br />
       </div>
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
