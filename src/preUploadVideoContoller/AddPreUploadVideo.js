@@ -199,91 +199,69 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
         <div className="container_pad">
           <div className="row comp_border">
             <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="language"
-                select
-                label="Language"
-                name="language"
-                value={preUploadVideo.language}
-                onChange={(e) => {
-                  handleInputChange(e);
-                }}
-                variant="outlined"
-              >
-                {languages.map((type) => (
-                  <MenuItem key={type} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
-            <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="planType "
-                select
-                name="planType"
-                label="Plan Type"
-                value={preUploadVideo.planType}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              >
-                {planTypes.map((type) => (
-                  <MenuItem key={type} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
-            <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="select-video-type"
-                select
-                label="Video Type"
-                name="videoType"
-                value={preUploadVideo.videoType}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              >
-                {videoTypes.map((type) => (
-                  <MenuItem key={type} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
-            <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="cbfcrating"
-                select
-                label="CBFC Rating"
-                name="cbfcrating"
-                value={preUploadVideo.cbfcrating}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              >
-                {cbfcrating.map((type) => (
-                  <MenuItem key={type} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div>
-            {/* <div className="col-md-4 col-sm-6 input__container comp_border">
+              <label htmlFor="language">Language</label>
               <input
-                className="input textfield"
-                type="number"
-                id="channelId"
-                label="Channel ID"
-                name="channelId"
-                value={preUploadVideo.channelId}
                 onChange={(e) => handleInputChange(e)}
-                variant="outlined"
+                value={preUploadVideo.language}
+                className="form-control"
+                list="languageL"
+                name="language"
+                id="language"
               />
-            </div> */}
+              <datalist id="languageL">
+                {languages.map((type) => (
+                  <option key={type} value={type} />
+                ))}
+              </datalist>
+            </div>
+            <div className="col-md-4 col-sm-6 input__container">
+              <label htmlFor="planType">Plan Type</label>
+              <input
+                onChange={(e) => handleInputChange(e)}
+                value={preUploadVideo.planType}
+                className="form-control"
+                list="planTypeL"
+                name="planType"
+                id="planType"
+              />
+              <datalist id="planTypeL">
+                {planTypes.map((type) => (
+                  <option key={type} value={type} />
+                ))}
+              </datalist>
+            </div>
+            <div className="col-md-4 col-sm-6 input__container">
+              <label htmlFor="videoType">Video Type</label>
+              <input
+                onChange={(e) => handleInputChange(e)}
+                value={preUploadVideo.videoType}
+                className="form-control"
+                list="videoTypeL"
+                name="videoType"
+                id="videoType"
+              />
+              <datalist id="videoTypeL">
+                {videoTypes.map((type) => (
+                  <option key={type} value={type} />
+                ))}
+              </datalist>
+            </div>
+            <div className="form-group col-md-4 col-sm-6">
+              <label htmlFor="cbfcrating">CBFC Rating</label>
+              <input
+                onChange={(e) => handleInputChange(e)}
+                className="form-control"
+                list="cbfcratingL"
+                value={preUploadVideo.cbfcrating}
+                name="cbfcrating"
+                id="cbfcrating"
+              />
+              <datalist id="cbfcratingL">
+                {cbfcrating.map((type) => (
+                  <option key={type} value={type} />
+                ))}
+              </datalist>
+            </div>
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="channelId">Channel ID</label>
               <input
@@ -297,18 +275,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 variant="outlined"
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                type="number"
-                id="duration"
-                label="Duration"
-                name="duration"
-                value={preUploadVideo.duration}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="duration">Duration</label>
               <input
@@ -322,18 +288,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 variant="outlined"
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                type="number"
-                id="likes"
-                label="Likes"
-                name="likes"
-                value={preUploadVideo.likes}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="likes">Likes</label>
               <input
@@ -347,18 +301,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 variant="outlined"
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                type="number"
-                id="numeps"
-                label="Number Of Episodes"
-                name="numeps"
-                value={preUploadVideo.numeps}
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="numeps">Numer Of Episodes</label>
               <input
@@ -372,19 +314,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 variant="outlined"
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="vdoUrl"
-                label="Video URL"
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-                placeholder="Video URL"
-                type="text"
-                name="vdoUrl"
-                value={vdoUrl}
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="videoUrl">Video URL</label>
               <input
@@ -399,19 +328,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 value={vdoUrl}
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="title"
-                label="Video Title"
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-                placeholder="Video Title..."
-                type="text"
-                name="title"
-                value={preUploadVideo.title}
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="title">Video Title</label>
               <input
@@ -426,19 +342,6 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 value={preUploadVideo.title}
               />
             </div>
-            {/* <div className="col-md-4 col-sm-6 input__container">
-              <TextField
-                className="input textfield"
-                id="thumbs"
-                label="Thumbs"
-                onChange={(e) => handleInputChange(e)}
-                variant="outlined"
-                placeholder="Thumbs"
-                type="text"
-                name="thumbs"
-                value={preUploadVideo.title}
-              />
-            </div> */}
             <div className="form-group col-sm-4 col-md-4">
               <label htmlFor="thumbs">Thumbs</label>
               <input
@@ -485,30 +388,18 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
               </Select>
             </div>
             <div className="col-md-12 col-sm-12 col-md input__container">
-              {/* <TextareaAutosize
-                className="input"
-                id="description"
-                // label="Video Description"
-                placeholder="Description..."
-                name="description"
-                onChange={(e) => handleInputChange(e)}
-                aria-label="minimum height"
-                rowsMin={3}
-                value={preUploadVideo.description}
-              /> */}
               <div className="form-group">
-                <label HTMLfor="description">Small textarea</label>
-                <textarea 
-                  className="form-control rounded-0" 
-                  rows="3"
+                <label htmlfor="description">Video Description</label>
+                <textarea
+                  className="form-control textarea"
+                  rows="5"
                   id="description"
                   placeholder="Description..."
                   name="description"
                   onChange={(e) => handleInputChange(e)}
                   aria-label="minimum height"
                   value={preUploadVideo.description}
-                  >
-                </textarea>
+                ></textarea>
               </div>
             </div>
           </div>

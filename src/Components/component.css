@@ -1,41 +1,48 @@
-.container_pad{
-    margin: 0 1.5rem;
-    padding: 1rem;
-    border: 1px solid rgb(222,226,230);
-    border-radius: 1rem;
-    background-color: white;
-  }
-  .container_pad button{
-    border-radius: 3.5rem;
-    /* margin-bottom: 1rem; */
-  }
-  .container_pad .btn-primary{
-    margin-bottom: 8px;
-    border:none !important;
-  }
-  .comp_border{
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-  .comp_border .text_btn .row .form-group label{
-    background-color: white;
-  }
-  .comp_border input{
-    background-color: #F2F5FF;
-    border-radius: 1rem;
-  }
-  .text_btn{
-    display: flex;
-    justify-content: space-between;
-  }
-  .eps_container_pad{
-    /* margin: 0 2rem; */
-    /* padding: 1rem; */
-    /* border: 1px solid rgb(222,226,230); */
-    /* border-radius: 1rem; */
-    /* background-color: rgb(242,242,242); */
-  }
-  .form-control{
-    height: calc(1.5em + 1.2em + 2px) !important;
-  }
-  
+.container_pad {
+  margin: 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid rgb(222, 226, 230);
+  border-radius: 1rem;
+  background-color: white;
+}
+.container_pad button {
+  border-radius: 3.5rem;
+  /* margin-bottom: 1rem; */
+}
+.container_pad .btn-primary {
+  margin-bottom: 8px;
+  border: none !important;
+}
+.comp_border {
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.comp_border .text_btn .row .form-group label {
+  background-color: white;
+}
+.comp_border input {
+  background-color: #f2f5ff;
+  border-radius: 1rem;
+}
+.comp_border textarea {
+  background-color: #f2f5ff;
+  border-radius: 1rem;
+}
+.text_btn {
+  display: flex;
+  justify-content: space-between;
+}
+.eps_container_pad {
+  /* margin: 0 2rem; */
+  /* padding: 1rem; */
+  /* border: 1px solid rgb(222,226,230); */
+  /* border-radius: 1rem; */
+  /* background-color: rgb(242,242,242); */
+}
+.form-control {
+  height: calc(1.5em + 1.2em + 2px) !important;
+}
+
+.textarea {
+  height: auto !important;
+}
