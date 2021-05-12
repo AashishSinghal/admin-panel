@@ -43,7 +43,7 @@ const AddDirector = ({ exportData }) => {
       <br />
       <div className="container_pad">
         <button
-          className="btn btn-outline-primary waves-effect"
+          className="btn btn-primary waves-effect"
           type="button"
           onClick={() => handleAddFields()}
         >
@@ -65,7 +65,7 @@ const AddDirector = ({ exportData }) => {
                 )}
               </div>
               <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="DirectorName">Name</label>
                   <input
                     type="text"
@@ -77,7 +77,7 @@ const AddDirector = ({ exportData }) => {
                     onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="Directorimg">Director Image</label>
                   <input
                     type="text"

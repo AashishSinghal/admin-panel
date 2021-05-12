@@ -43,7 +43,7 @@ const AddActress = () => {
       <br />
         <div className="container_pad">
           <button
-            className="btn btn-outline-primary waves-effect"
+            className="btn btn-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -65,7 +65,7 @@ const AddActress = () => {
                   )}
                 </div>
                 <div className="row">
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="CastActressName">Actress Name</label>
                     <input
                       type="text"
@@ -77,7 +77,7 @@ const AddActress = () => {
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="CastActressimg">Actress Image</label>
                     <input
                       type="text"

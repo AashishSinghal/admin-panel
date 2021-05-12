@@ -11,6 +11,7 @@
   }
   .container_pad .btn-primary{
     margin-bottom: 8px;
+    border:none !important;
   }
   .comp_border{
     border-radius: 1rem;
@@ -20,18 +21,18 @@
     background-color: white;
   }
   .comp_border input{
-    background-color: rgb(230, 240, 218);
+    background-color: #F2F5FF;
     border-radius: 1rem;
   }
   .text_btn{
     display: flex;
     justify-content: space-between;
   }
-  .ep_container_pad{
-    margin: 0 2rem;
-    padding: 1rem;
-    border: 1px solid rgb(222,226,230);
-    border-radius: 1rem;
+  .eps_container_pad{
+    /* margin: 0 2rem; */
+    /* padding: 1rem; */
+    /* border: 1px solid rgb(222,226,230); */
+    /* border-radius: 1rem; */
     /* background-color: rgb(242,242,242); */
   }
   .form-control{

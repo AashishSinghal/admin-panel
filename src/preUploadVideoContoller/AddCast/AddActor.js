@@ -44,7 +44,7 @@ const AddActor = () => {
       <br />
         <div className="container_pad">
           <button
-            className="btn btn-outline-primary waves-effect"
+            className="btn btn-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -66,7 +66,7 @@ const AddActor = () => {
                   )}
                 </div>
                 <div className="row">
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="CastActorName">Actor Name</label>
                     <input
                       type="text"
@@ -78,7 +78,7 @@ const AddActor = () => {
                       onChange={(event) => handleInputChange(index, event)}
                     />
                   </div>
-                  <div className="form-group col-sm-4 col-md-5">
+                  <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="CastActorimg">Actor Image</label>
                     <input
                       type="text"

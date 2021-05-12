@@ -43,7 +43,7 @@ const AddSupportingActor = () => {
       <br/>
         <div className="container_pad">
           <button
-            className="btn btn-outline-primary waves-effect"
+            className="btn btn-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -65,7 +65,7 @@ const AddSupportingActor = () => {
                   )}
               </div>
               <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="SuppActorName">Supportng Actor Name</label>
                   <input
                     type="text"
@@ -77,7 +77,7 @@ const AddSupportingActor = () => {
                     onChange={event => handleInputChange(index, event)}
                   />
                 </div>
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="SuppActorimg">Supportng Actor Image</label>
                   <input
                     type="text"

@@ -43,7 +43,7 @@ const AddWriter = ({ exportData }) => {
       <br />
       <div className="container_pad">
         <button
-          className="btn btn-outline-primary waves-effect"
+          className="btn btn-primary waves-effect"
           type="button"
           onClick={() => handleAddFields()}
         >
@@ -56,7 +56,7 @@ const AddWriter = ({ exportData }) => {
                 <h4>Writer {index + 1}</h4>
                 {index === 0 ? null : (
                   <button
-                    className="btn btn-outline-danger waves-effect"
+                    className="btn btn-danger waves-effect"
                     type="button"
                     onClick={() => handleRemoveFields(index)}
                   >
@@ -65,7 +65,7 @@ const AddWriter = ({ exportData }) => {
                 )}
               </div>
               <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="WriterName">Name</label>
                   <input
                     type="text"
@@ -77,7 +77,7 @@ const AddWriter = ({ exportData }) => {
                     onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
-                <div className="form-group col-sm-4 col-md-5">
+                <div className="form-group col-sm-4 col-md-6">
                   <label htmlFor="Writerimg">Writer Image</label>
                   <input
                     type="text"

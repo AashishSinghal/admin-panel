@@ -50,45 +50,47 @@ const App = () => {
   });
 
   return (
-    <div className="App">
-      <div className="upload">
-        <form
-          onSubmit={(e) => {
-            handleFileUpload(e);
-          }}
-        >
-          <div className="input-div">
-            <input type="file" />
-            <p>Drag your files here or click in this area.</p>
+    <div className="App main_wrapper_box">
+      <div className="inner_wrapper_box">
+        <div className="upload">
+          <form
+            onSubmit={(e) => {
+              handleFileUpload(e);
+            }}
+          >
+            <div className="input-div">
+              <input type="file" />
+              <p>Drag your files here or click in this area.</p>
+            </div>
+            <button type="submit">
+              <i className="bi bi-upload"></i><span> Upload</span>
+            </button>
+          </form>
+        </div>
+        <div className="video__details">
+          <div className="upload__details">
+            <strong>File Name - </strong>
+            {files ? files.name : "Not Available"}
+            <br />
+            <strong>File Size - </strong>
+            {files ? files.size : "Not Available"}
+            <br />
+            <strong>File Type - </strong>
+            {files ? files.type : "Not Available"}
+            <br />
           </div>
-          <button type="submit">
-            <i className="bi bi-upload"></i> &nbsp;Upload
-          </button>
-        </form>
-      </div>
-      <div className="video__details">
-        <div className="upload__details">
-          <strong>File Name - </strong>
-          {files ? files.name : "Not Available"}
-          <br />
-          <strong>File Size - </strong>
-          {files ? files.size : "Not Available"}
-          <br />
-          <strong>File Type - </strong>
-          {files ? files.type : "Not Available"}
-          <br />
+          <div className="server__details">
+            {loading ? <div className="server__loading"></div> : null}
+            <strong>File Download URI - </strong>
+            <span>{response ? response.fileDownloadUri : "Loading..."}</span>
+            &nbsp; &nbsp;
+            <i className="bi bi-clipboard"></i>
+            <br />
+          </div>
         </div>
-        <div className="server__details">
-          {loading ? <div className="server__loading"></div> : null}
-          <strong>File Download URI - </strong>
-          <span>{response ? response.fileDownloadUri : "Loading..."}</span>
-          &nbsp; &nbsp;
-          <i className="bi bi-clipboard"></i>
-          <br />
-        </div>
+        <br />
+        <AddPreUploadVideo vdoUrl={response.fileDownloadUri} />
       </div>
-      <br />
-      <AddPreUploadVideo vdoUrl={response.fileDownloadUri} />
     </div>
   );
 };
