@@ -32,13 +32,13 @@
   display: flex;
   justify-content: space-between;
 }
-.eps_container_pad {
+/* .eps_container_pad { */
   /* margin: 0 2rem; */
   /* padding: 1rem; */
   /* border: 1px solid rgb(222,226,230); */
   /* border-radius: 1rem; */
   /* background-color: rgb(242,242,242); */
-}
+/* } */
 .form-control {
   height: calc(1.5em + 1.2em + 2px) !important;
 }
