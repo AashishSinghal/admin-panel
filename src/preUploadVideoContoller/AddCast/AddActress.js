@@ -2,30 +2,30 @@ import React, { useState, Fragment } from "react";
 import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddActress = () => {
+const AddActress = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"0",
+      id: "0",
       name: "",
       imageUrl: "",
     },
   ]);
-  
+
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
     if (event.target.name === "name") {
       values[index].name = event.target.value;
     } else if (event.target.name === "imageUrl") {
       values[index].imageUrl = event.target.value;
-    } 
-
+    }
     setInputFields(values);
+    exportData("actoress", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     });
@@ -91,10 +91,10 @@ const AddActress = () => {
                   </div>
                 </div>
               </div>
-            </Fragment>
-          ))}
-        </div>
-        {/* <div className="submit-button">
+          </Fragment>
+        ))}
+      </div>
+      {/* <div className="submit-button">
           <button
             className="btn btn-primary mr-2"
             type="submit"
@@ -103,8 +103,8 @@ const AddActress = () => {
             Save
           </button>
         </div>*/}
-        <br/>
-         {/* <pre>
+      <br />
+      {/* <pre>
         {JSON.stringify(inputFields, null, 2)}
         </pre>  */}
     </>

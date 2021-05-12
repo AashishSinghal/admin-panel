@@ -2,15 +2,14 @@ import React, { useState, Fragment } from "react";
 import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddActor = () => {
+const AddActor = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"0",
+      id: "0",
       name: "",
       imageUrl: "",
     },
   ]);
-
 
   const handleInputChange = (index, event) => {
     const values = [...inputFields];
@@ -18,15 +17,16 @@ const AddActor = () => {
       values[index].name = event.target.value;
     } else if (event.target.name === "CastActorimg") {
       values[index].CastActorimg = event.target.value;
-    } 
+    }
 
     setInputFields(values);
+    exportData("actor", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
     values.push({
-      id:"",
+      id: "",
       name: "",
       imageUrl: "",
     });
@@ -92,10 +92,10 @@ const AddActor = () => {
                   </div>
                 </div>
               </div>
-            </Fragment>
-          ))}
-        </div>
-        {/* <div className="submit-button">
+          </Fragment>
+        ))}
+      </div>
+      {/* <div className="submit-button">
           <button
             className="btn btn-primary mr-2"
             type="submit"
@@ -104,7 +104,7 @@ const AddActor = () => {
             Save
           </button>
         </div>*/}
-        {/* <br />
+      {/* <br />
         <pre>{JSON.stringify(inputFields, null, 2)}</pre> */}
     </>
   );
