@@ -496,10 +496,10 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 rowsMin={3}
                 value={preUploadVideo.description}
               /> */}
-              <div class="form-group">
+              <div className="form-group">
                 <label HTMLfor="description">Small textarea</label>
                 <textarea 
-                  class="form-control rounded-0" 
+                  className="form-control rounded-0" 
                   rows="3"
                   id="description"
                   placeholder="Description..."
