@@ -40,29 +40,29 @@ const AddSupportingActor = ({ exportData }) => {
   return (
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
-      <br />
-      <div className="container_pad">
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={() => handleAddFields()}
-        >
-          Add Supporting Actor
-        </button>
-        {inputFields.map((inputField, index) => (
+      <br/>
+        <div className="container_pad">
+          <button
+            className="btn btn-outline-primary waves-effect"
+            type="button"
+            onClick={() => handleAddFields()}
+          >
+            Add Supporting Actor
+          </button>
+          {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
                 <h4>Supporting Actor {index + 1}</h4>
                 {index === 0 ? null : (
-                  <button
-                    className="btn btn-danger"
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    Remove
-                  </button>
-                )}
+                    <button
+                      className="btn btn-outline-danger waves-effect"
+                      type="button"
+                      onClick={() => handleRemoveFields(index)}
+                    >
+                      Remove
+                    </button>
+                  )}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
@@ -80,7 +80,8 @@ const AddSupportingActor = ({ exportData }) => {
                 <div className="form-group col-sm-4 col-md-5">
                   <label htmlFor="SuppActorimg">Supportng Actor Image</label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Image URl"
                     className="form-control"
                     id="SuppActorimg"
                     name="imageUrl"
@@ -103,7 +104,9 @@ const AddSupportingActor = ({ exportData }) => {
           </button>
         </div>
         <br/>*/}
-      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+         {/* <pre> 
+        {JSON.stringify(inputFields, null, 2)}
+        </pre> */}
     </>
   );
 };

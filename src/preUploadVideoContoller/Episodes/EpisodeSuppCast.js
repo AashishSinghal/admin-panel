@@ -45,7 +45,7 @@ const EpisodeSupportCast = ({ exportData }) => {
       <div>
         <div className="eps_container_pad">
           <button
-            className="btn btn-primary"
+            className="btn btn-outline-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -58,7 +58,7 @@ const EpisodeSupportCast = ({ exportData }) => {
                   <h4>Episode Supporting Cast {index + 1}</h4>
                   {index === 0 ? null : (
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-outline-danger waves-effect"
                       type="button"
                       onClick={() => handleRemoveFields(index)}
                     >
@@ -82,7 +82,8 @@ const EpisodeSupportCast = ({ exportData }) => {
                   <div className="form-group col-sm-4 col-md-6">
                     <label htmlFor="epsSupportCastimg">Image</label>
                     <input
-                      type="file"
+                      type="text"
+                      placeholder="Image URl"
                       className="form-control"
                       id="epsSupportCastimg"
                       name="imageUrl"
@@ -104,8 +105,8 @@ const EpisodeSupportCast = ({ exportData }) => {
             Save
           </button>
         </div>*/}
-        <br />
-        <pre>{JSON.stringify(inputFields, null, 3)}</pre>
+        {/* <br />
+        <pre>{JSON.stringify(inputFields, null, 3)}</pre> */}
       </div>
     </>
   );

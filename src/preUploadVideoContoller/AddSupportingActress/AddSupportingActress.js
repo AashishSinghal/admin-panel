@@ -39,29 +39,29 @@ const AddSupportingActress = ({ exportData }) => {
   };
   return (
     <>
-      <br />
-      <div className="container_pad">
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={() => handleAddFields()}
-        >
-          Add Supporting Actress
-        </button>
-        {inputFields.map((inputField, index) => (
+      <br/>
+        <div className="container_pad">
+          <button
+            className="btn btn-outline-primary waves-effect"
+            type="button"
+            onClick={() => handleAddFields()}
+          >
+            Add Supporting Actress
+          </button>
+          {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
                 <h4>Supporting Actress {index + 1}</h4>
                 {index === 0 ? null : (
-                  <button
-                    className="btn btn-danger"
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    Remove
-                  </button>
-                )}
+                    <button
+                      className="btn btn-outline-danger waves-effect"
+                      type="button"
+                      onClick={() => handleRemoveFields(index)}
+                    >
+                      Remove
+                    </button>
+                  )}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
@@ -83,7 +83,8 @@ const AddSupportingActress = ({ exportData }) => {
                     Supportng Actress Image
                   </label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Image URl"
                     className="form-control"
                     id="SuppActressimg"
                     name="imageUrl"
@@ -105,8 +106,10 @@ const AddSupportingActress = ({ exportData }) => {
             Save
           </button>
         </div>*/}
-      <br />
-      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+        {/* <br/>
+         <pre>
+        {JSON.stringify(inputFields, null, 2)}
+        </pre>  */}
     </>
   );
 };

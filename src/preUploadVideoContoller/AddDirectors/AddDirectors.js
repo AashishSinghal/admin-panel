@@ -43,7 +43,7 @@ const AddDirector = ({ exportData }) => {
       <br />
       <div className="container_pad">
         <button
-          className="btn btn-primary"
+          className="btn btn-outline-primary waves-effect"
           type="button"
           onClick={() => handleAddFields()}
         >
@@ -56,7 +56,7 @@ const AddDirector = ({ exportData }) => {
                 <h4>Director {index + 1}</h4>
                 {index === 0 ? null : (
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger waves-effect"
                     type="button"
                     onClick={() => handleRemoveFields(index)}
                   >
@@ -80,7 +80,8 @@ const AddDirector = ({ exportData }) => {
                 <div className="form-group col-sm-4 col-md-5">
                   <label htmlFor="Directorimg">Director Image</label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Image URl"
                     className="form-control"
                     id="Directorimg"
                     name="imageUrl"
@@ -102,8 +103,8 @@ const AddDirector = ({ exportData }) => {
             Save
           </button>
         </div>*/}
-      <br />
-      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+      {/* <br />
+      <pre>{JSON.stringify(inputFields, null, 2)}</pre> */}
     </>
   );
 };
