@@ -17,17 +17,12 @@ const Episodes = ({ exportData }) => {
   ]);
 
   useEffect(() => {
-    console.log("Episode Details - ", inputFields);
+    // console.log("Episode Details - ", inputFields);
 
     // return () => {
     //   cleanup
     // };
   }, [inputFields, exportData]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("inputFields", inputFields);
-  };
 
   const handleInputChange = (event) => {
     const values = [...inputFields];
@@ -94,7 +89,6 @@ const Episodes = ({ exportData }) => {
   return (
     <>
       <br />
-      <form onSubmit={handleSubmit}>
         <div className="container_pad">
           {/* <button
             className="btn btn-primary"
@@ -175,9 +169,8 @@ const Episodes = ({ exportData }) => {
             Save
           </button>
         </div>*/}
-        <br />
-        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
-      </form>
+        {/* <br />
+        <pre>{JSON.stringify(inputFields, null, 2)}</pre> */}
     </>
   );
 };

@@ -196,7 +196,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
     <div className="add__prevideo">
       <h1>Pre Upload Video</h1>
       <br />
-      <form>
+      <form className="container">
         <div className="basic__details">
           <div className="basic__details__inner">
             <div className="row">
@@ -446,8 +446,8 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                   value={promo.submitDate}
                   onChange={(e) => handlePromoChange(e)}
                 />
-                <br />
-                <pre>{JSON.stringify(promo, null, 2)}</pre>
+                {/* <br />
+                <pre>{JSON.stringify(promo, null, 2)}</pre> */}
               </div>
               <div className="text_btn col-md-6 custom_col">
                 <h4>Trailer</h4>
@@ -483,8 +483,8 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                   value={trailer.submitDate}
                   onChange={(e) => handleTrailerChange(e)}
                 />
-                <br />
-                <pre>{JSON.stringify(trailer, null, 2)}</pre>
+                {/* <br />
+                <pre>{JSON.stringify(trailer, null, 2)}</pre> */}
               </div>
             </div>
           </div>

@@ -43,7 +43,7 @@ const AddSupportingActor = () => {
       <br/>
         <div className="container_pad">
           <button
-            className="btn btn-primary"
+            className="btn btn-outline-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -56,7 +56,7 @@ const AddSupportingActor = () => {
                 <h4>Supporting Actor {index+1}</h4>
                 {index === 0 ? null : (
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-outline-danger waves-effect"
                       type="button"
                       onClick={() => handleRemoveFields(index)}
                     >
@@ -80,7 +80,8 @@ const AddSupportingActor = () => {
                 <div className="form-group col-sm-4 col-md-5">
                   <label htmlFor="SuppActorimg">Supportng Actor Image</label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Image URl"
                     className="form-control"
                     id="SuppActorimg"
                     name="imageUrl"
@@ -103,9 +104,9 @@ const AddSupportingActor = () => {
           </button>
         </div>
         <br/>*/}
-         <pre> 
+         {/* <pre> 
         {JSON.stringify(inputFields, null, 2)}
-        </pre>
+        </pre> */}
     </>
   )
 }

@@ -44,7 +44,7 @@ const AddActor = () => {
       <br />
         <div className="container_pad">
           <button
-            className="btn btn-primary"
+            className="btn btn-outline-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -57,7 +57,7 @@ const AddActor = () => {
                   <h4>Actor {index + 1}</h4>
                   {index === 0 ? null : (
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-outline-danger waves-effect"
                       type="button"
                       onClick={() => handleRemoveFields(index)}
                     >
@@ -81,7 +81,8 @@ const AddActor = () => {
                   <div className="form-group col-sm-4 col-md-5">
                     <label htmlFor="CastActorimg">Actor Image</label>
                     <input
-                      type="file"
+                      type="text"
+                      placeholder="Image URl"
                       className="form-control"
                       id="CastActorimg"
                       name="CastActorimg"
@@ -103,8 +104,8 @@ const AddActor = () => {
             Save
           </button>
         </div>*/}
-        <br />
-        <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+        {/* <br />
+        <pre>{JSON.stringify(inputFields, null, 2)}</pre> */}
     </>
   );
 };

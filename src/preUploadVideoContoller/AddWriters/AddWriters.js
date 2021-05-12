@@ -43,7 +43,7 @@ const AddWriter = ({ exportData }) => {
       <br />
       <div className="container_pad">
         <button
-          className="btn btn-primary"
+          className="btn btn-outline-primary waves-effect"
           type="button"
           onClick={() => handleAddFields()}
         >
@@ -56,7 +56,7 @@ const AddWriter = ({ exportData }) => {
                 <h4>Writer {index + 1}</h4>
                 {index === 0 ? null : (
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-outline-danger waves-effect"
                     type="button"
                     onClick={() => handleRemoveFields(index)}
                   >
@@ -80,7 +80,8 @@ const AddWriter = ({ exportData }) => {
                 <div className="form-group col-sm-4 col-md-5">
                   <label htmlFor="Writerimg">Writer Image</label>
                   <input
-                    type="file"
+                    type="text"
+                    placeholder="Image URl"
                     multiple
                     className="form-control"
                     id="Writerimg"
@@ -103,8 +104,8 @@ const AddWriter = ({ exportData }) => {
             Save
           </button> 
         </div> */}
-      <br />
-      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
+      {/* <br />
+      <pre>{JSON.stringify(inputFields, null, 2)}</pre> */}
     </>
   );
 };
