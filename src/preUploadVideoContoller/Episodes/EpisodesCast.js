@@ -45,7 +45,7 @@ const EpisodeCast = ({ exportData }) => {
       <div>
         <div className="eps_container_pad">
           <button
-            className="btn btn-outline-primary waves-effect"
+            className="btn btn-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >

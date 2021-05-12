@@ -41,56 +41,56 @@ const AddActress = ({ exportData }) => {
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
       <br />
-      <div className="container_pad">
-        <button
-          className="btn btn-outline-primary waves-effect"
-          type="button"
-          onClick={() => handleAddFields()}
-        >
-          Add Actress
-        </button>
-        {inputFields.map((inputField, index) => (
-          <Fragment key={`${inputField}~${index}`}>
-            <div className="comp_border">
-              <div className="text_btn">
-                <h4>Actress {index + 1}</h4>
-                {index === 0 ? null : (
-                  <button
-                    className="btn btn-outline-danger waves-effect"
-                    type="button"
-                    onClick={() => handleRemoveFields(index)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="CastActressName">Actress Name</label>
-                  <input
-                    type="text"
-                    placeholder="Actress Name"
-                    className="form-control"
-                    id="CastActressName"
-                    name="name"
-                    value={inputField.name}
-                    onChange={(event) => handleInputChange(index, event)}
-                  />
+        <div className="container_pad">
+          <button
+            className="btn btn-primary waves-effect"
+            type="button"
+            onClick={() => handleAddFields()}
+          >
+            Add Actress
+          </button>
+          {inputFields.map((inputField, index) => (
+            <Fragment key={`${inputField}~${index}`}>
+              <div className="comp_border">
+                <div className="text_btn">
+                  <h4>Actress {index + 1}</h4>
+                  {index === 0 ? null : (
+                    <button
+                      className="btn btn-outline-danger waves-effect"
+                      type="button"
+                      onClick={() => handleRemoveFields(index)}
+                    >
+                      Remove
+                    </button>
+                  )}
                 </div>
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="CastActressimg">Actress Image</label>
-                  <input
-                    type="text"
-                    placeholder="Image URl"
-                    className="form-control"
-                    id="CastActressimg"
-                    name="imageUrl"
-                    value={inputField.imageUrl}
-                    onChange={(event) => handleInputChange(index, event)}
-                  />
+                <div className="row">
+                  <div className="form-group col-sm-4 col-md-6">
+                    <label htmlFor="CastActressName">Actress Name</label>
+                    <input
+                      type="text"
+                      placeholder="Actress Name"
+                      className="form-control"
+                      id="CastActressName"
+                      name="name"
+                      value={inputField.name}
+                      onChange={(event) => handleInputChange(index, event)}
+                    />
+                  </div>
+                  <div className="form-group col-sm-4 col-md-6">
+                    <label htmlFor="CastActressimg">Actress Image</label>
+                    <input
+                      type="text"
+                      placeholder="Image URl"
+                      className="form-control"
+                      id="CastActressimg"
+                      name="imageUrl"
+                      value={inputField.imageUrl}
+                      onChange={(event) => handleInputChange(index, event)}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
           </Fragment>
         ))}
       </div>

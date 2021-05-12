@@ -153,8 +153,10 @@ const Episodes = ({ exportData }) => {
                 />
               </div>
               <hr />
-              <EpisodeCast exportData={handleChildData} />
-              <EpisodeSupportCast exportData={handleChildData} />
+              <div className="row">
+                <EpisodeCast exportData={handleChildData} />
+                <EpisodeSupportCast exportData={handleChildData} />
+              </div>
             </div>
           </div>
           {/* </Fragment>

@@ -42,7 +42,7 @@ const AddSupportingActress = ({ exportData }) => {
       <br/>
         <div className="container_pad">
           <button
-            className="btn btn-outline-primary waves-effect"
+            className="btn btn-primary waves-effect"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -64,10 +64,8 @@ const AddSupportingActress = ({ exportData }) => {
                   )}
               </div>
               <div className="row">
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="SuppActressName">
-                    Supportng Actress Name
-                  </label>
+                <div className="form-group col-sm-4 col-md-6">
+                  <label htmlFor="SuppActressName">Supportng Actress Name</label>
                   <input
                     type="text"
                     placeholder="Supportng Actress Name"
@@ -78,10 +76,8 @@ const AddSupportingActress = ({ exportData }) => {
                     onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
-                <div className="form-group col-sm-4 col-md-5">
-                  <label htmlFor="SuppActressimg">
-                    Supportng Actress Image
-                  </label>
+                <div className="form-group col-sm-4 col-md-6">
+                  <label htmlFor="SuppActressimg">Supportng Actress Image</label>
                   <input
                     type="text"
                     placeholder="Image URl"
