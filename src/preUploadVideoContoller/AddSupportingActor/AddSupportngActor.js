@@ -1,12 +1,11 @@
 import React, { useState, Fragment } from "react";
-import '../../Components/component.css'
+import "../../Components/component.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-const AddSupportingActor = () => {
-
+const AddSupportingActor = ({ exportData }) => {
   const [inputFields, setInputFields] = useState([
     {
-      id:"0",
+      id: "0",
       name: "",
       imageUrl: "",
     },
@@ -18,21 +17,22 @@ const AddSupportingActor = () => {
       values[index].name = event.target.value;
     } else if (event.target.name === "imageUrl") {
       values[index].imageUrl = event.target.value;
-    } 
-
+    }
     setInputFields(values);
+    exportData("supportingActor", values);
   };
 
   const handleAddFields = () => {
     const values = [...inputFields];
-    values.push({ 
-    id:"",
-    name: "",
-    imageUrl: "",});
+    values.push({
+      id: "",
+      name: "",
+      imageUrl: "",
+    });
     setInputFields(values);
   };
 
-  const handleRemoveFields = index => {
+  const handleRemoveFields = (index) => {
     const values = [...inputFields];
     values.splice(index, 1);
     setInputFields(values);
@@ -40,29 +40,29 @@ const AddSupportingActor = () => {
   return (
     <>
       {/* <h1>Dynamic Form Fields in React</h1> */}
-      <br/>
-        <div className="container_pad">
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={() => handleAddFields()}
-          >
-            Add Supporting Actor
-          </button>
-          {inputFields.map((inputField, index) => (
+      <br />
+      <div className="container_pad">
+        <button
+          className="btn btn-primary"
+          type="button"
+          onClick={() => handleAddFields()}
+        >
+          Add Supporting Actor
+        </button>
+        {inputFields.map((inputField, index) => (
           <Fragment key={`${inputField}~${index}`}>
             <div className="comp_border">
               <div className="text_btn">
-                <h4>Supporting Actor {index+1}</h4>
+                <h4>Supporting Actor {index + 1}</h4>
                 {index === 0 ? null : (
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      onClick={() => handleRemoveFields(index)}
-                    >
-                      Remove
-                    </button>
-                  )}
+                  <button
+                    className="btn btn-danger"
+                    type="button"
+                    onClick={() => handleRemoveFields(index)}
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
               <div className="row">
                 <div className="form-group col-sm-4 col-md-5">
@@ -74,7 +74,7 @@ const AddSupportingActor = () => {
                     id="SuppActorName"
                     name="name"
                     value={inputField.name}
-                    onChange={event => handleInputChange(index, event)}
+                    onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
                 <div className="form-group col-sm-4 col-md-5">
@@ -85,15 +85,15 @@ const AddSupportingActor = () => {
                     id="SuppActorimg"
                     name="imageUrl"
                     value={inputField.imageUrl}
-                    onChange={event => handleInputChange(index, event)}
+                    onChange={(event) => handleInputChange(index, event)}
                   />
                 </div>
               </div>
             </div>
           </Fragment>
-          ))}
-        </div>
-        {/* <div className="submit-button">
+        ))}
+      </div>
+      {/* <div className="submit-button">
           <button
             className="btn btn-primary mr-2"
             type="submit"
@@ -103,11 +103,9 @@ const AddSupportingActor = () => {
           </button>
         </div>
         <br/>*/}
-         <pre> 
-        {JSON.stringify(inputFields, null, 2)}
-        </pre>
+      <pre>{JSON.stringify(inputFields, null, 2)}</pre>
     </>
-  )
-}
+  );
+};
 
 export default AddSupportingActor;
