@@ -89,6 +89,7 @@ const App = () => {
             <div className="input-div">
               {/* File Input Over Here */}
               <input
+              className="file_limit"
                 type="file"
                 multiple
                 onChange={(e) => {
@@ -98,7 +99,7 @@ const App = () => {
               <p>Drag your files here or click in this area.</p>
             </div>
             <button type="submit">
-              <i className="bi bi-upload"></i> <span>Upload</span>
+              <i className="bi bi-upload limit_button"></i> <span>Upload</span>
             </button>
           </form>
         </div>
