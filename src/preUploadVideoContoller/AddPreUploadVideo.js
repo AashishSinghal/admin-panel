@@ -1,4 +1,4 @@
-import { Input, MenuItem, Select, InputLabel } from "@material-ui/core";
+import { Input, MenuItem, Select } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import "./preUploadvideo.css";
 import AddDirector from "./AddDirectors/AddDirectors";
@@ -351,7 +351,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
               />
             </div>
             <div className="form-group col-sm-4 col-md-4">
-            <label htmlFor="genres">Genre</label>
+              <label htmlFor="genres">Genre</label>
               <Select
                 className="form-control drp_select"
                 labelId="demo-mutiple-name-label"
