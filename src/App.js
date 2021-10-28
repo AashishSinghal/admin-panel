@@ -33,9 +33,13 @@ const App = () => {
       uploadVideo(formData).then(
         //<----- API CAll
         (res) => {
-          console.log(`response ${i} - `, res, formData);
-          values.push(res.data);
-          setResponse(values);
+          if (res) {
+            console.log(`response ${i} - `, res, formData);
+            values.push(res.data);
+            setResponse(values);
+          } else {
+            console.log("No Data Received");
+          }
           //     // setVideoFile(null);
         },
         (err) => {

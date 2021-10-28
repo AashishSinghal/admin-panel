@@ -383,7 +383,7 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
             </div>
             <div className="col-md-12 col-sm-12 col-md input__container">
               <div className="form-group">
-                <label htmlfor="description">Video Description</label>
+                <label htmlFor="description">Video Description</label>
                 <textarea
                   className="form-control textarea"
                   rows="5"
