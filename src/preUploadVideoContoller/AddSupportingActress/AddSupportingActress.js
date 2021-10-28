@@ -42,7 +42,7 @@ const AddSupportingActress = ({ exportData }) => {
       <br/>
         <div className="container_pad">
           <button
-            className="btn btn-primary waves-effect"
+            className="add_button"
             type="button"
             onClick={() => handleAddFields()}
           >

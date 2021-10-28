@@ -44,7 +44,7 @@ const AddActor = ({ exportData }) => {
       <br />
         <div className="container_pad">
           <button
-            className="btn btn-primary waves-effect"
+            className="add_button"
             type="button"
             onClick={() => handleAddFields()}
           >
@@ -57,7 +57,7 @@ const AddActor = ({ exportData }) => {
                   <h4>Actor {index + 1}</h4>
                   {index === 0 ? null : (
                     <button
-                      className="btn btn-outline-danger waves-effect"
+                      className="remove_button"
                       type="button"
                       onClick={() => handleRemoveFields(index)}
                     >

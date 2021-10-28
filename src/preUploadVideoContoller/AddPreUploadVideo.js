@@ -350,10 +350,10 @@ const AddPreUploadVideo = ({ vdoUrl }) => {
                 value={preUploadVideo.title}
               />
             </div>
-            <div className="col-md-4 col-sm-6 input__container">
-              <InputLabel id="demo-mutiple-name-label">Genre</InputLabel>
+            <div className="form-group col-sm-4 col-md-4">
+            <label htmlFor="genres">Genre</label>
               <Select
-                className="input multiselect"
+                className="form-control drp_select"
                 labelId="demo-mutiple-name-label"
                 id="genres"
                 multiple
